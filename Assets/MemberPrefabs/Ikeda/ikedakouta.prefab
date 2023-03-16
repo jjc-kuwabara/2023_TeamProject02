@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6730640653790140004}
   - component: {fileID: 6730640653790140003}
   m_Layer: 0
-  m_Name: "\u6C60\u7530\u8A87\u592A"
+  m_Name: ikedakouta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
