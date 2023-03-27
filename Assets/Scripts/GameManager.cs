@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager :Singleton <GameManager>
 {
     //プレイヤーの変数（体力など
     [Header("PlayerのHP")]
