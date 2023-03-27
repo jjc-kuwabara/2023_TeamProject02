@@ -5,15 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DebugManager : MonoBehaviour
 {
-
     void Start()
     {
-        
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             SceneReset();
         }
