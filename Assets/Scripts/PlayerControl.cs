@@ -128,4 +128,9 @@ public class PlayerControl : MonoBehaviour
         
 
     }
+
+    public void Dead(bool flg)
+    {
+        characon.enabled = flg;
+    }
 }

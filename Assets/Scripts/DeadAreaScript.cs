@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DeadAreaScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    PlayerControl controll;//playerControlから呼び出して保存
+
     void Start()
     {
-        
+        controll = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();//Playerタグの人を呼び出す
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,8 +21,10 @@ public class DeadAreaScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Playerでした");
+            controll.Dead(false);//Deadでキャラコンをオフにする
             other.transform.position = new Vector3(0, 2, 0); //リスの高さ
             other.transform.rotation = Quaternion.identity; //リスの回転
+            controll.Dead(true);//キャラコンをオンにする。
         }
 
     }
