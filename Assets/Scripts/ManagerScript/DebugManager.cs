@@ -11,14 +11,17 @@ public class DebugManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            SceneReset();
-        }
+        SceneReset();
+        Clear();
+        DaM();
     }
     public void SceneReset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+       
     }
     public void Clear()
     {
