@@ -17,12 +17,12 @@ public class PlayerHit : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.transform.tag == "Enemy")
+        if(collision.transform.tag == "Enemy")
         {
             GameManager.Instance.Damage(10);
-
+            Debug.Log("“G‚ÆÚG");
         }
     }
 }
