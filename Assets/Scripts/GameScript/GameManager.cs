@@ -6,9 +6,9 @@ public class GameManager :Singleton <GameManager>
 {
     //プレイヤーの変数（体力など
     [Header("PlayerのHP")]
-    public int HealthCounter = 100;
-    public int HealthMAX = 100;
-    public int DeadHealth = 0;
+    public float HPCurrent = 100;
+    public float HPMax = 100;
+    public float HPMin = 0;   
 
     //ゲームのクリアやシーンなど必要なフラグ
     [Header("ゲームの進行状況を示すフラグ")]
@@ -25,18 +25,22 @@ public class GameManager :Singleton <GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        HPCurrent = HPMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(HPCurrent <= 0)
+        {
+            GameOver();
+        }
+        HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
     }
 
-    public void Damage()
+    public void Damage(float damage)
     {
-        HealthCounter -= 10;
+        HPCurrent -= damage;
 
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
     }
