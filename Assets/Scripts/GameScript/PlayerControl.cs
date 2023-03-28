@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         moveDirection.z = ver * moveSpeed;
 
         //normalizedで正規化してそろえる。
-        moveDirection = new Vector3(moveDirection.normalized.x, 0, moveDirection.z) * moveSpeed;
+        moveDirection = new Vector3(moveDirection.normalized.x, 0, moveDirection.normalized.z) * moveSpeed;
 
         //キャラクターの移動処理の反映
         characon.Move(moveDirection * Time.deltaTime);
