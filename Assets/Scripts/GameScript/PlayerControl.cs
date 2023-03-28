@@ -30,9 +30,9 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Gravity();
-        Jumping();
+       Movement();
+       Gravity();
+       Jumping();
     }
 
     void Movement()
@@ -40,8 +40,8 @@ public class PlayerControl : MonoBehaviour
         hor = Input.GetAxis("Horizontal");     //水平（左右）
         ver = Input.GetAxis("Vertical");      //垂直（上下）
 
-        Debug.Log("左右=" + hor);
-        Debug.Log("上下=" + ver);
+        /*Debug.Log("左右=" + hor);
+        Debug.Log("上下=" + ver);*/
 
         //各ベクトルに（移動方向）に入力の値を入れる
         moveDirection.x = hor * moveSpeed;
