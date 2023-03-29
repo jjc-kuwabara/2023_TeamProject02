@@ -11,6 +11,10 @@ public class PlayerControl : MonoBehaviour
     public float riseTime = 1;
     public float gravity = 10;
 
+    
+    [Header("回復アイテム")]
+    public float itemcount;      //回復アイテムの個数
+    public float healing;  //回復量
 
     //よくわからんけど必要な奴
     CharacterController characon;
@@ -21,6 +25,8 @@ public class PlayerControl : MonoBehaviour
     Vector3 moveDirection;
     Vector3 gravityDirection;
 
+    public bool inputOK = false;  //入力可能
+
 
     void Start()
     {
@@ -30,11 +36,21 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Movement();
-       Gravity();
-       Jumping();
+        InputCheck();
+        if (inputOK)
+        {
+            Movement();
+            Gravity();
+            Jumping();
+            Healing();
+        }  
     }
 
+    public void InputCheck()
+    {
+        if (GameManager.Instance.mainGame) { inputOK = true; }  //mainGame中なら操作可能
+        else { inputOK = false; }
+    }
     void Movement()
     {
         hor = Input.GetAxis("Horizontal");     //水平（左右）
@@ -114,19 +130,31 @@ public class PlayerControl : MonoBehaviour
         //地面に立っているかどうかを判定してくれる
         //地面に接地している時は重力は働かないようにする
 
-        
+
         if (characon.isGrounded && gravityDirection.y < 0)
         {
             gravityDirection.y = -0.5f;
-            //Debug.Log("地面にたってるよ");
+            //Debug.Log("地面");
         }
         else
         {
             gravityDirection.y -= (gravity * Time.deltaTime);
-            //Debug.Log("空中にいるよ");
+            //Debug.Log("空中");
         }
-        
 
+
+    }
+
+    public void Healing()
+    {
+        if (Input.GetKeyDown(KeyCode.L) && itemcount >= 1)
+            if (GameManager.Instance.hpFull != true)
+            {
+                {
+                    GameManager.Instance.Heal(healing);
+                    itemcount--;
+                }
+            }
     }
 
     public void Dead(bool flg)

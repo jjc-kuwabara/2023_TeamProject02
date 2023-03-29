@@ -22,7 +22,8 @@ public class PlayerHit : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            Debug.Log(other.gameObject.name + "“G‚É“–‚½‚Á‚½‚æ");
+            GameManager.Instance.Damage(10);
+            Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½‚æ");
         }
        
     }

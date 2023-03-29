@@ -8,7 +8,7 @@ public class GameManager :Singleton <GameManager>
     [Header("PlayerのHP")]
     public float HPCurrent = 100;
     public float HPMax = 100;
-    public float HPMin = 0;   
+    public float HPMin = 0;
 
     //ゲームのクリアやシーンなど必要なフラグ
     [Header("ゲームの進行状況を示すフラグ")]
@@ -21,10 +21,12 @@ public class GameManager :Singleton <GameManager>
     //よくわからないけど必要なフラグかと思ったけど、重要
     [Header("ゲームないのフラグ")]
     public bool state_damage = false;
+    public bool hpFull;  //HPが最大かを判定するフラグ
 
     // Start is called before the first frame update
     void Start()
     {
+        mainGame = true;
         HPCurrent = HPMax;
     }
 
@@ -35,6 +37,7 @@ public class GameManager :Singleton <GameManager>
         {
             GameOver();
         }
+        HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
     }
 
@@ -43,6 +46,15 @@ public class GameManager :Singleton <GameManager>
         HPCurrent -= damage;
 
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
+    }
+    public void Heal(float heal)
+    {
+        HPCurrent += heal;
+    }
+    public void HPCheck()  //HPが最大か判定
+    {
+        if(HPCurrent == HPMax) { hpFull = true; }
+        else { hpFull = false; }
     }
 
     public void GameOver()
