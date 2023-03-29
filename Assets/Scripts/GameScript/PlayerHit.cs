@@ -5,24 +5,25 @@ using UnityEngine;
 public class PlayerHit : MonoBehaviour
 {
     PlayerControl control;
-    // Start is called before the first frame update
+    Rigidbody rig;
+
     void Start()
     {
         control = GetComponent<PlayerControl>();
+        rig = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.transform.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy")
         {
-            GameManager.Instance.Damage(10);
-            Debug.Log("ìGÇ∆ê⁄êG");
+            Debug.Log(other.gameObject.name + "ìGÇ…ìñÇΩÇ¡ÇΩÇÊ");
         }
+       
     }
 }

@@ -30,9 +30,9 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Gravity();
-        Jumping();
+       Movement();
+       Gravity();
+       Jumping();
     }
 
     void Movement()
@@ -40,8 +40,8 @@ public class PlayerControl : MonoBehaviour
         hor = Input.GetAxis("Horizontal");     //水平（左右）
         ver = Input.GetAxis("Vertical");      //垂直（上下）
 
-        Debug.Log("左右=" + hor);
-        Debug.Log("上下=" + ver);
+        /*Debug.Log("左右=" + hor);
+        Debug.Log("上下=" + ver);*/
 
         //各ベクトルに（移動方向）に入力の値を入れる
         moveDirection.x = hor * moveSpeed;
@@ -59,7 +59,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (characon.isGrounded)
         {
-            Debug.Log("地面にいる");
+            //Debug.Log("地面にいる");
             //地面に接地している時のみ入力可能
             if (Input.GetButtonDown("Jump"))
             {
@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("地面にいない");
+            //Debug.Log("地面にいない");
             if (Jumpflg && Input.GetButtonUp("Jump") || riseTimeTemp > riseTime)
             {
                 Jumpflg = false;
