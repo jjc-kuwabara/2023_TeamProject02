@@ -59,7 +59,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (characon.isGrounded)
         {
-            Debug.Log("地面にいる");
+            //Debug.Log("地面にいる");
             //地面に接地している時のみ入力可能
             if (Input.GetButtonDown("Jump"))
             {
@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("地面にいない");
+            //Debug.Log("地面にいない");
             if (Jumpflg && Input.GetButtonUp("Jump") || riseTimeTemp > riseTime)
             {
                 Jumpflg = false;
