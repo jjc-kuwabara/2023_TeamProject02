@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyWood : MonoBehaviour
 {
 
-    public int hitCount;
-    public GameObject[] kafun;
+    public int hitCount;   //–Ø‚Ì‘Ì—Í
+    public GameObject[] kafun;   //‚Ü‚«U‚ç‚·‰Ô•²
 
-    [SerializeField] bool hit;
-    [SerializeField] bool dead;
+    int range;    //¶¬‚·‚é‰Ô•²‚ğƒ‰ƒ“ƒ_ƒ€‚É‚·‚é
+
+    [SerializeField] bool hit = false;   //‰£‚ç‚ê‚½‚Ìƒtƒ‰ƒO
+    [SerializeField] bool dead = false;   //Ø‚è“|‚³‚ê‚½‚Æ‚«‚Ìƒtƒ‰ƒO
 
     void Start()
     {  
@@ -17,9 +19,34 @@ public class EnemyWood : MonoBehaviour
 
     void Update()
     {
+        if (hitCount <= 0) 
+        { 
+            dead = true;
+            Down();
+        }
+        Sprinkle();
+    }
+    public void Hit()
+    {
+        hitCount--;
+        hit = true;
     }
 
-    public void Down()
+    public void Down()    //Ø‚è“|‚³‚ê‚½‚çÁ‚¦‚é
     {
+        if(dead)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void Sprinkle()    //‰£‚ç‚ê‚½‚ç‰Ô•²‚ğT‚­
+    {
+        if(hit)
+        {
+            range = Random.Range(0, 5);
+            Vector3 sprpos = this.transform.position;
+            Instantiate(kafun[range], new Vector3(sprpos.x,sprpos.y,sprpos.z),Quaternion.identity);
+        }
     }
 }
