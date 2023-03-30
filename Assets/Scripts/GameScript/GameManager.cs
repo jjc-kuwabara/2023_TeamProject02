@@ -44,7 +44,8 @@ public class GameManager :Singleton <GameManager>
     public void Damage(float damage)
     {
         HPCurrent -= damage;
-
+        Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
+        
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
     }
     public void Heal(float heal)
