@@ -612,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 6004104534248174384, guid: aa2792a7e2a072d4d9eeb89ec2c1e3e9, type: 3}
       propertyPath: StageFX.Array.data[0]
       value: 
-      objectReference: {fileID: 8250417037599897238, guid: 0ef49b26aee0c0440887302c88aad5b0, type: 3}
+      objectReference: {fileID: 6972770405002400181, guid: 0ef49b26aee0c0440887302c88aad5b0, type: 3}
     - target: {fileID: 6603872228345102102, guid: aa2792a7e2a072d4d9eeb89ec2c1e3e9, type: 3}
       propertyPath: m_Name
       value: EffectManager

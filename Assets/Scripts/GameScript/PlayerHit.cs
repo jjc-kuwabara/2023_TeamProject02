@@ -24,6 +24,11 @@ public class PlayerHit : MonoBehaviour
         {
             GameManager.Instance.Damage(10);
             Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½‚æ");
+            GameObject HitEffect;
+            HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
+            HitEffect.transform.position = this.gameObject.transform.position;
+            HitEffect.transform.parent = this.gameObject.transform;
+            Destroy(HitEffect, 3.0f);
         }
        
     }
