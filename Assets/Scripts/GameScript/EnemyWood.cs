@@ -36,7 +36,7 @@ public class EnemyWood : MonoBehaviour
     {
         if(dead)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,3);
         }
     }
 
