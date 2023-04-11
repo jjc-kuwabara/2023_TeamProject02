@@ -2,40 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class EnemySearch : MonoBehaviour
+public class EnemySearch : MonoBehaviour
 {
-        SphereCollider col;
+    //プレイヤーが侵入しているフラグ
+    public bool playerON;
 
-        public bool playerOn = false;
-        public bool search = false;
+    //colliderコンポーネント
+    SphereCollider col;
 
-        void Start()
-        {
-            col = GetComponent<SphereCollider>();
-            search = true;
-        }
-        void Update()
-        {
+    void Start()
+    {
+        col = GetComponent<SphereCollider>();
+    }
 
-        }
-        private void OnTriggerEnter(Collider other)
+    void Update()
+    {
+
+    }
+
+    //Colliderに接触している間
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.tag == "Player")
-            {
-                playerOn = true;
-                search = false;
-                col.radius = 5;
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.gameObject.tag == "Player")
-            {
-                playerOn = false;
-                search = true;
-                col.radius = 3;
-            }
+            playerON = true;
+            col.radius = 6;
         }
     }
 
-
+    //Colliderから出たら
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerON = false;
+            col.radius = 3;
+        }
+    }
+}
