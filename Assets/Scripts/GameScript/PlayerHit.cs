@@ -28,7 +28,7 @@ public class PlayerHit : MonoBehaviour
             HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
             HitEffect.transform.position = this.gameObject.transform.position;
             HitEffect.transform.parent = this.gameObject.transform;
-            Destroy(HitEffect, 3.0f);
+            Destroy(HitEffect, 1.0f);
         }
        
     }
