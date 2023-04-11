@@ -10,6 +10,8 @@ public class GameManager :Singleton <GameManager>
     public float HPMax = 100;
     public float HPMin = 0;
 
+    float Delay;
+    float WaitTime;
     //ゲームのクリアやシーンなど必要なフラグ
     [Header("ゲームの進行状況を示すフラグ")]
     public bool gameStart = false;  //ゲーム開始前
@@ -39,21 +41,17 @@ public class GameManager :Singleton <GameManager>
         }
         HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
+        if(state_damage)
+        {
+            StartCoroutine(DelayTime());
+        }
     }
 
     public void Damage(float damage)
     {
         HPCurrent -= damage;
         
-        
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
-         
-          
-            state_damage = false;
-            
-            
-
-        
     }
     public void Heal(float heal)
     {
@@ -77,5 +75,10 @@ public class GameManager :Singleton <GameManager>
         mainGame = false;
         gameClear = true;
         Debug.Log("ゲームクリア！");
+    }
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(1);
+        state_damage = false;
     }
 }
