@@ -26,7 +26,7 @@ public class EnemySearch : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerON = true;
-            col.radius = 6;
+            col.radius = 8;
         }
     }
 
@@ -36,7 +36,7 @@ public class EnemySearch : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerON = false;
-            col.radius = 3;
+            col.radius = 5;
         }
     }
 }

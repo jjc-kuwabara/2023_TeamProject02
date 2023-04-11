@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeadArea
   - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX

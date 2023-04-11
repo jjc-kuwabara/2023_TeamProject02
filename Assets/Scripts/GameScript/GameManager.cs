@@ -10,8 +10,6 @@ public class GameManager :Singleton <GameManager>
     public float HPMax = 100;
     public float HPMin = 0;
 
-    float Delay;
-    float WaitTime;
     //ゲームのクリアやシーンなど必要なフラグ
     [Header("ゲームの進行状況を示すフラグ")]
     public bool gameStart = false;  //ゲーム開始前

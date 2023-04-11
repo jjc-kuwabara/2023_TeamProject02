@@ -28,12 +28,13 @@ public class PlayerControl : MonoBehaviour
     public bool inputOK = false;  //“ü—Í‰Â”\
     public bool attack = false;  //UŒ‚‰Â”\
 
-    EnemyWood wood;
+    public GameObject weaponObj;
+   
 
     void Start()
     {
         characon = GetComponent<CharacterController>();
-        wood = GetComponent<EnemyWood>();
+        weaponObj.SetActive(false);
     }
 
     void Update()
@@ -166,18 +167,13 @@ public class PlayerControl : MonoBehaviour
         {
             if (!attack) 
             {
-                wood.Hit();
+                weaponObj.SetActive(true);
                 attack = true;
-                StartCoroutine(AttackOK());
             }
+            else{ return; }
         }
     }
-    private IEnumerator AttackOK()
-    {
-        yield return new WaitForSeconds(1);
-        attack = false;
-    }
-
+  
     public void Dead(bool flg)
     {
         characon.enabled = flg;
