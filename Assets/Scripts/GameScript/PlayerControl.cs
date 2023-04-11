@@ -64,7 +64,7 @@ public class PlayerControl : MonoBehaviour
 
         //各ベクトルに（移動方向）に入力の値を入れる
         moveDirection.x = hor * moveSpeed;
-        moveDirection.z = ver * moveSpeed;
+        /*moveDirection.z = ver * moveSpeed;*/
 
         //normalizedで正規化してそろえる。
         moveDirection = new Vector3(moveDirection.normalized.x, 0, moveDirection.normalized.z) * moveSpeed;
