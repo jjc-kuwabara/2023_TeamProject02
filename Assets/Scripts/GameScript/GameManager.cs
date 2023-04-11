@@ -47,6 +47,13 @@ public class GameManager :Singleton <GameManager>
         
         
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
+         
+          
+            state_damage = false;
+            
+            
+
+        
     }
     public void Heal(float heal)
     {
@@ -58,14 +65,14 @@ public class GameManager :Singleton <GameManager>
         else { hpFull = false; }
     }
 
-    public void GameOver()
+    public void GameOver()//ゲームオーバーのタイムラインを有効
     {
         mainGame = false;
         gameOver = true;
         Debug.Log("ゲームオーバー");
     }
 
-    public void GameClear()
+    public void GameClear()//ゲームクリアのタイムラインを有効
     {
         mainGame = false;
         gameClear = true;
