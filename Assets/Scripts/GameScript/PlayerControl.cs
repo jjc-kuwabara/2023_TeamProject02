@@ -26,14 +26,16 @@ public class PlayerControl : MonoBehaviour
     Vector3 gravityDirection;
 
     public bool inputOK = false;  //ì¸óÕâ¬î\
+    public bool attack = false;  //çUåÇâ¬î\
 
+    EnemyWood wood;
 
     void Start()
     {
         characon = GetComponent<CharacterController>();
+        wood = GetComponent<EnemyWood>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         InputCheck();
@@ -43,6 +45,7 @@ public class PlayerControl : MonoBehaviour
             Gravity();
             Jumping();
             Healing();
+            Attack();
         }  
     }
 
@@ -155,6 +158,24 @@ public class PlayerControl : MonoBehaviour
                     itemcount--;
                 }
             }
+    }
+
+    public void Attack()  //çUåÇ
+    {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            if (!attack) 
+            {
+                wood.Hit();
+                attack = true;
+                StartCoroutine(AttackOK());
+            }
+        }
+    }
+    private IEnumerator AttackOK()
+    {
+        yield return new WaitForSeconds(1);
+        attack = false;
     }
 
     public void Dead(bool flg)

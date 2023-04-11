@@ -10,8 +10,8 @@ public class EnemyWood : MonoBehaviour
 
     int range;    //生成する花粉をランダムにする
 
-    [SerializeField] bool hit = false;   //殴られた時のフラグ
-    [SerializeField] bool dead = false;   //切り倒されたときのフラグ
+    public bool hit = false;   //殴られた時のフラグ
+    public bool dead = false;   //切り倒されたときのフラグ
 
     void Start()
     {  
@@ -47,6 +47,7 @@ public class EnemyWood : MonoBehaviour
             range = Random.Range(0, 5);
             Vector3 sprpos = this.transform.position;
             Instantiate(kafun[range], new Vector3(sprpos.x,sprpos.y,sprpos.z),Quaternion.identity);
+            hit = false;
         }
     }
 }
