@@ -20,16 +20,19 @@ public class PlayerHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
-            GameManager.Instance.Damage(10);
-            Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½‚æ");
-            GameObject HitEffect;
-            HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
-            HitEffect.transform.position = this.gameObject.transform.position;
-            HitEffect.transform.parent = this.gameObject.transform;
-            Destroy(HitEffect, 1.0f);
+            if (control.attack == false)
+            {
+                GameManager.Instance.Damage(10);
+                Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½‚æ");
+                GameObject HitEffect;
+                HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
+                HitEffect.transform.position = this.gameObject.transform.position;
+                HitEffect.transform.parent = this.gameObject.transform;
+                Destroy(HitEffect, 1.0f);
+            }
+
         }
-       
     }
 }
