@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float riseTime = 1;
     public float gravity = 10;
 
-    
+
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
     public float healing;  //回復量
@@ -28,13 +28,10 @@ public class PlayerControl : MonoBehaviour
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
 
-    public GameObject weaponObj;
-   
-
     void Start()
     {
         characon = GetComponent<CharacterController>();
-        weaponObj.SetActive(false);
+
     }
 
     void Update()
@@ -47,7 +44,7 @@ public class PlayerControl : MonoBehaviour
             Jumping();
             Healing();
             Attack();
-        }  
+        }
     }
 
     public void InputCheck()
@@ -149,7 +146,7 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    public void Healing()
+    public void Healing()  //回復
     {
         if (Input.GetKeyDown(KeyCode.L) && itemcount >= 1)
             if (GameManager.Instance.hpFull != true)
@@ -163,16 +160,22 @@ public class PlayerControl : MonoBehaviour
 
     public void Attack()  //攻撃
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            if (!attack) 
+            if (!attack)
             {
-                weaponObj.SetActive(true);
                 attack = true;
+                StartCoroutine("AttackOff");
             }
-            else{ return; }
+            else { return; }
         }
     }
+    IEnumerator AttackOff()  //attackのフラグを切るためのコルーチン
+    {
+        yield return new WaitForSeconds(1);
+        attack = false;
+    }
+        
   
     public void Dead(bool flg)
     {
