@@ -12,19 +12,23 @@ public class EnemyWood : MonoBehaviour
 
     public bool hit = false;   //殴られた時のフラグ
     public bool dead = false;   //切り倒されたときのフラグ
+    public bool death = false;
 
     void Start()
-    {  
+    {
     }
 
     void Update()
     {
-        if (hitCount <= 0) 
-        { 
+        if (hitCount <= 0 && !death)   //一度だけ処理する
+        {
+            EnemyMove move = gameObject.GetComponent<EnemyMove>();
+            move.enabled = false;    //コンポーネントの非有効化
             dead = true;
+            death = true;
             Down();
         }
-        Sprinkle();
+        //Sprinkle();
     }
     public void Hit()
     {
@@ -36,6 +40,8 @@ public class EnemyWood : MonoBehaviour
     {
         if(dead)
         {
+            GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1],transform.position,Quaternion.identity);  //燃えるエフェクト
+            Destroy(deadEffect, 3);
             Destroy(this.gameObject,3);
         }
     }
