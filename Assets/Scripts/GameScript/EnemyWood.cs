@@ -56,4 +56,18 @@ public class EnemyWood : MonoBehaviour
             hit = false;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Weapon") { return; }
+        if (other.gameObject.tag == "Player")
+        {
+            GameManager.Instance.Damage(10);
+            Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½‚æ");
+            GameObject HitEffect;
+            HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
+            HitEffect.transform.position = other.gameObject.transform.position;
+            HitEffect.transform.parent = other.gameObject.transform;
+            Destroy(HitEffect, 1.0f);
+        }
+    }
 }
