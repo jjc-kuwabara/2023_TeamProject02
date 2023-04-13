@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager :Singleton <GameManager>
 {
@@ -23,11 +24,13 @@ public class GameManager :Singleton <GameManager>
     public bool state_damage = false;
     public bool hpFull;  //HPが最大かを判定するフラグ
 
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
         mainGame = true;
         HPCurrent = HPMax;
+        slider.value = 1;
     }
 
     // Update is called once per frame
@@ -48,12 +51,18 @@ public class GameManager :Singleton <GameManager>
     public void Damage(float damage)
     {
         HPCurrent -= damage;
-        
+
+        slider.value = HPCurrent / HPMax;
+
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
     }
     public void Heal(float heal)
     {
         HPCurrent += heal;
+
+        slider.value = HPCurrent / HPMax;
+
+        Debug.Log("HP回復");
     }
     public void HPCheck()  //HPが最大か判定
     {
