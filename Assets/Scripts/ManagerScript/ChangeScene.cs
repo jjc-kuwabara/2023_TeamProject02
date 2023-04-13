@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    //0 = タイトル　| 1　＝　ステージ選択　| 2　＝　説明画面　| 3　＝　春ステージ　| 4　＝　夏ステージ　| 5　＝　秋ステージ　| 6　＝　冬ステージ
+    //0 = タイトル　| 1　＝　ステージ選択　| 2　＝　説明画面　| 3　＝　春ステージ　| 4　＝　夏ステージ　| 5　＝　秋ステージ　| 6　＝　冬ステージ | 7 = テストステージ
     public void InstructionsScene()
     {
         FadeManager.Instance.LoadSceneIndex(2, 1);
@@ -40,5 +41,10 @@ public class ChangeScene : MonoBehaviour
     public void WinterStageScene()
     {
         FadeManager.Instance.LoadSceneIndex(6, 1);
+    }
+
+    public void TestStageScene()
+    {
+        FadeManager.Instance.LoadSceneIndex(7, 1);
     }
 }
