@@ -47,7 +47,7 @@ public class EnemyMove : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
 
         // 自分の子を探す処理
-        seach = transform.GetChild(0).GetComponent<EnemySearch>();
+        seach = transform.Find("EnemySeach").GetComponent<EnemySearch>();
         // Transform mySon = transform.GetChild(1);
         // search = searchObject.GetComponent<EnemySearch>();
     }
