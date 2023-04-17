@@ -7,10 +7,9 @@ public class PlayerControl : MonoBehaviour
     //変動できる数値　変数
     public float moveSpeed = 10;
     public float JumpPower = 10;
-    float hor, ver;
+    float hor;
     public float riseTime = 1;
     public float gravity = 10;
-
 
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
@@ -18,6 +17,7 @@ public class PlayerControl : MonoBehaviour
 
     //よくわからんけど必要な奴
     CharacterController characon;
+    Animator animator;
     bool Jumpflg;
     float riseTimeTemp;
 
@@ -28,15 +28,19 @@ public class PlayerControl : MonoBehaviour
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
 
+    bool left;  //左向き
+    bool right;  //右向き
+
     void Start()
     {
         characon = GetComponent<CharacterController>();
-
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         InputCheck();
+        Animation();
         if (inputOK)
         {
             Movement();
@@ -45,6 +49,8 @@ public class PlayerControl : MonoBehaviour
             Healing();
             Attack();
         }
+        trun();
+        AttackOff();
     }
 
     public void InputCheck()
@@ -52,10 +58,30 @@ public class PlayerControl : MonoBehaviour
         if (GameManager.Instance.mainGame) { inputOK = true; }  //mainGame中なら操作可能
         else { inputOK = false; }
     }
+    public void Animation()
+    {
+        if(!characon.isGrounded)
+        {
+            animator.SetBool("Jump", true);
+            return;
+        }
+        animator.SetBool("Jump", false);
+        if(hor != 0)
+        {
+            animator.SetBool("Run", true);
+            return;
+        }
+        animator.SetBool("Run", false);
+
+        if(attack)
+        {
+            animator.SetTrigger("Attack");
+        }
+    }
+
     void Movement()
     {
         hor = Input.GetAxis("Horizontal");     //水平（左右）
-        ver = Input.GetAxis("Vertical");      //垂直（上下）
 
         /*Debug.Log("左右=" + hor);
         Debug.Log("上下=" + ver);*/
@@ -165,17 +191,54 @@ public class PlayerControl : MonoBehaviour
             if (!attack)
             {
                 attack = true;
-                StartCoroutine("AttackOff");
+
             }
             else { return; }
         }
     }
-    IEnumerator AttackOff()  //attackのフラグを切るためのコルーチン
+    public void AttackOff()
     {
-        yield return new WaitForSeconds(1);
-        attack = false;
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8)
+            {
+            }
+            else
+            {
+                attack = false;
+            }
+        }
     }
-        
+
+    public void trun()
+    {
+        if (Input.GetKeyDown(KeyCode.D)) 
+        {
+          if(!right)
+            {
+                right = true;
+                left = false;
+                Transform myTransform = this.transform;
+                Vector3 rote = myTransform.localEulerAngles;
+                rote.y = 90f;
+                myTransform.eulerAngles = rote;  //右向き
+                return;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (!left)
+            {
+                right = false;
+                left = true;
+                Transform myTransform = this.transform;
+                Vector3 rote = myTransform.localEulerAngles;
+                rote.y = -90f;
+                myTransform.eulerAngles = rote;  //左向き
+                return;
+            }
+        }
+    } 
   
     public void Dead(bool flg)
     {
