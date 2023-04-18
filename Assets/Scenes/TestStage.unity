@@ -4415,7 +4415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  JumpPower: 10
+  JumpPower: 5
   riseTime: 0.3
   gravity: 25
   itemcount: 3

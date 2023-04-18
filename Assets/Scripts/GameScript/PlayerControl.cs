@@ -60,12 +60,12 @@ public class PlayerControl : MonoBehaviour
     }
     public void Animation()
     {
-        if(!characon.isGrounded)
+        /*if(!characon.isGrounded)
         {
             animator.SetBool("Jump", true);
             return;
         }
-        animator.SetBool("Jump", false);
+        animator.SetBool("Jump", false);*/
         if(hor != 0)
         {
             animator.SetBool("Run", true);
