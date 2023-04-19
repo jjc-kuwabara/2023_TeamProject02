@@ -14,8 +14,11 @@ public class EnemyWood : MonoBehaviour
     public bool dead = false;   //切り倒されたときのフラグ
     public bool death = false;
 
+    Animator animator;
+    
     void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,10 +43,13 @@ public class EnemyWood : MonoBehaviour
     {
         if(dead)
         {
+            animator.SetTrigger("Die");
             GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1],transform.position,Quaternion.identity);  //燃えるエフェクト
             Destroy(deadEffect, 3);
             Destroy(this.gameObject,3);
+            
         }
+
     }
 
     public void Sprinkle()    //殴られたら花粉を撒く
