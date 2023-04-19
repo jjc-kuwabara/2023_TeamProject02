@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour
 
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
+    public bool cantmove = false; //動けないよ
 
     bool left;  //左向き
     bool right;  //右向き
@@ -50,12 +51,27 @@ public class PlayerControl : MonoBehaviour
             Attack();
         }
         trun();
+        cantmoveing();
     }
 
     public void InputCheck()
     {
         if (GameManager.Instance.mainGame) { inputOK = true; }  //mainGame中なら操作可能
         else { inputOK = false; }
+    }
+    public void cantmoveing()
+    {
+        if (cantmove)
+        {
+            moveSpeed = 0;
+            JumpPower = 0;
+        }
+        else
+        {
+            moveSpeed = 10;
+            JumpPower = 5;
+        }
+         
     }
     public void Animation()
     {
@@ -72,11 +88,7 @@ public class PlayerControl : MonoBehaviour
         }
         animator.SetBool("Run", false);
 
-        if(attack)
-        {
-            animator.SetTrigger("Attack");
-            StartCoroutine("AttackOff");
-        }
+        
     }
 
     void Movement()
@@ -186,19 +198,26 @@ public class PlayerControl : MonoBehaviour
 
     public void Attack()  //攻撃
     {
+        
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (!attack)
             {
                 attack = true;
+                cantmove = true;
+                animator.SetTrigger("Attack");//攻撃のアニメーション
+                StartCoroutine("AttackOff");
+
             }
-            else { return; }
+            else
+            { return; }
         }
     }
     IEnumerator AttackOff()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         attack = false;
+        cantmove = false;
     }
 
     public void trun()

@@ -163,8 +163,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 3471801613570041617}
-  m_Follow: {fileID: 3471801613570041617}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -4386,6 +4386,7 @@ MonoBehaviour:
   healing: 10
   inputOK: 0
   attack: 0
+  cantmove: 0
 --- !u!136 &3471801613577783427
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4408,7 +4409,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3471801613570538225}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
