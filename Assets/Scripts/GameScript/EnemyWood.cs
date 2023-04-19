@@ -41,15 +41,12 @@ public class EnemyWood : MonoBehaviour
 
     public void Down()    //切り倒されたら消える
     {
-        if(dead)
+        if (dead)
         {
-            animator.SetTrigger("Die");
-            GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1],transform.position,Quaternion.identity);  //燃えるエフェクト
+            GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1], transform.position, Quaternion.identity);  //燃えるエフェクト
             Destroy(deadEffect, 3);
-            Destroy(this.gameObject,3);
-            
+            Destroy(this.gameObject, 3);
         }
-
     }
 
     public void Sprinkle()    //殴られたら花粉を撒く
@@ -63,8 +60,7 @@ public class EnemyWood : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Weapon") { return; }
+    { 
         if (other.gameObject.tag == "Player")
         {
             GameManager.Instance.Damage(10);
@@ -75,5 +71,6 @@ public class EnemyWood : MonoBehaviour
             HitEffect.transform.parent = other.gameObject.transform;
             Destroy(HitEffect, 1.0f);
         }
+        if (other.gameObject.tag == "Weapon") { return; }
     }
 }

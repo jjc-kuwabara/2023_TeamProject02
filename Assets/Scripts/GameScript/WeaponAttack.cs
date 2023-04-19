@@ -5,18 +5,25 @@ using UnityEngine;
 public class WeaponAttack : MonoBehaviour
 {
 
+    PlayerControl control;
+
     void Start()
     {
+        control = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();//Playerタグの人を呼び出す
+        
     }
     void Update()
     {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if(control.attack)
         {
-            Debug.Log("攻撃");
-            other.GetComponent<EnemyWood>().Hit();
-        }
+            if (other.tag == "Enemy")
+            {
+               Debug.Log("攻撃");
+               other.GetComponent<EnemyWood>().Hit();
+            }
+        }     
     }
 }

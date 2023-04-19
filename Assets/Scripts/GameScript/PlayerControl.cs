@@ -207,10 +207,9 @@ public class PlayerControl : MonoBehaviour
                 cantmove = true;
                 animator.SetTrigger("Attack");//攻撃のアニメーション
                 StartCoroutine("AttackOff");
-
+               
             }
-            else
-            { return; }
+            else { return; }
         }
     }
     IEnumerator AttackOff()
