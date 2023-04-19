@@ -50,7 +50,6 @@ public class PlayerControl : MonoBehaviour
             Attack();
         }
         trun();
-        AttackOff();
     }
 
     public void InputCheck()
@@ -60,12 +59,12 @@ public class PlayerControl : MonoBehaviour
     }
     public void Animation()
     {
-        /*if(!characon.isGrounded)
+        if(Jumpflg)
         {
             animator.SetBool("Jump", true);
             return;
         }
-        animator.SetBool("Jump", false);*/
+        animator.SetBool("Jump", false);
         if(hor != 0)
         {
             animator.SetBool("Run", true);
@@ -76,6 +75,7 @@ public class PlayerControl : MonoBehaviour
         if(attack)
         {
             animator.SetTrigger("Attack");
+            StartCoroutine("AttackOff");
         }
     }
 
@@ -191,23 +191,14 @@ public class PlayerControl : MonoBehaviour
             if (!attack)
             {
                 attack = true;
-
             }
             else { return; }
         }
     }
-    public void AttackOff()
+    IEnumerator AttackOff()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8)
-            {
-            }
-            else
-            {
-                attack = false;
-            }
-        }
+        yield return new WaitForSeconds(0.5f);
+        attack = false;
     }
 
     public void trun()

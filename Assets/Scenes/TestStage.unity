@@ -166,10 +166,10 @@ MonoBehaviour:
   m_LookAt: {fileID: 3471801613570041617}
   m_Follow: {fileID: 3471801613570041617}
   m_Lens:
-    FieldOfView: 70
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -1083,11 +1083,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 70
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1602,21 +1602,9 @@ MonoBehaviour:
   enableAngleLimits: 1
   enableCollision: 1
   enableLengthLimits: 1
-  collideWithGround: 0
+  collideWithGround: 1
   groundHeight: 0
-  springBones:
-  - {fileID: 429634825458650055}
-  - {fileID: 429634824940850611}
-  - {fileID: 429634825381164464}
-  - {fileID: 429634825675618866}
-  - {fileID: 599223639050157976}
-  - {fileID: 599223639007878653}
-  - {fileID: 429634824774412565}
-  - {fileID: 429634825421189459}
-  - {fileID: 429634824418047131}
-  - {fileID: 429634825327280017}
-  - {fileID: 599223640595868096}
-  - {fileID: 599223640741587686}
+  springBones: []
   boneColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   colliderColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   collisionColor: {r: 1, g: 0, b: 0, a: 1}
@@ -1634,26 +1622,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 343
-  dragForce: 0.889
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 243891339304584010}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -7.4
-    max: 8.9
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -26.6
+    active: 0
+    min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.04
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634824774412565
 MonoBehaviour:
@@ -1667,11 +1653,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 570
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 7265295573568404925}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
     active: 0
@@ -1682,11 +1668,9 @@ MonoBehaviour:
     min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.02
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634824940850611
 MonoBehaviour:
@@ -1700,26 +1684,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 570
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 760730425273628351}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -101.8
-    max: 11.2
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
     active: 0
     min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.04
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634825327280017
 MonoBehaviour:
@@ -1733,26 +1715,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 343
-  dragForce: 0.889
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 6225606229940703439}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -7.4
-    max: 8.9
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -0
-    max: 26.6
+    active: 0
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.04
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634825381164464
 MonoBehaviour:
@@ -1766,26 +1746,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 254
-  dragForce: 0.889
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 6375783922290683602}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -28.9
-    max: 49.9
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -18.4
+    active: 0
+    min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.015
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634825421189459
 MonoBehaviour:
@@ -1799,11 +1777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 570
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 3928485776339448455}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
     active: 0
@@ -1814,11 +1792,9 @@ MonoBehaviour:
     min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.02
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634825458650055
 MonoBehaviour:
@@ -1832,26 +1808,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 570
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 8202255219078024978}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -101.8
-    max: 11.2
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
     active: 0
     min: 0
     max: 0
   lengthLimitTargets: []
-  radius: 0.04
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &429634825675618866
 MonoBehaviour:
@@ -1865,26 +1839,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 254
-  dragForce: 0.889
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 8865444713348472926}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -28.9
-    max: 49.9
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -0
-    max: 18.4
+    active: 0
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.015
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!1 &438006150894851688
 GameObject:
@@ -2026,26 +1998,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 590
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 6404566736718943162}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -15.8
-    max: 54.2
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -58
-    max: 23.5
+    active: 0
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.01
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &599223639050157976
 MonoBehaviour:
@@ -2059,26 +2029,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 590
-  dragForce: 0.897
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 6404566737775953755}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -15.8
-    max: 54.2
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
-    active: 1
-    min: -58
-    max: 23.5
+    active: 0
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.01
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &599223639672950318
 MonoBehaviour:
@@ -2104,26 +2072,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 219
-  dragForce: 0.885
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 1070087021613527509}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -35
-    max: 43.5
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
     active: 0
-    min: -58
-    max: 23.5
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.01
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &599223640741587686
 MonoBehaviour:
@@ -2137,26 +2103,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 219
-  dragForce: 0.885
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 1481378063018045260}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
-    active: 1
-    min: -35
-    max: 43.5
+    active: 0
+    min: 0
+    max: 0
   zAngleLimits:
     active: 0
-    min: -58
-    max: 23.5
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0.01
+  radius: 0.05
   sphereColliders: []
-  capsuleColliders:
-  - {fileID: 6404566736423693900}
-  - {fileID: 6404566736354585467}
+  capsuleColliders: []
   panelColliders: []
 --- !u!114 &599223640864052794
 MonoBehaviour:
@@ -4450,7 +4414,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!143 &3471801613577783429
 CharacterController:
@@ -5878,8 +5842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.12
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
   shouldDrawGizmosThisFrame: 0
 --- !u!1 &6404566736354585469
@@ -5911,8 +5875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.12
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
   shouldDrawGizmosThisFrame: 0
 --- !u!1 &6404566736423693902
@@ -5991,22 +5955,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03118221f4bfcd74ba0ad8075da02411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffnessForce: 426
-  dragForce: 0.852
+  stiffnessForce: 0.01
+  dragForce: 0.4
   springForce: {x: 0, y: -0.0001, z: 0}
   windInfluence: 1
-  pivotNode: {fileID: 6675280406648358840}
+  pivotNode: {fileID: 0}
   angularStiffness: 100
   yAngleLimits:
     active: 0
-    min: -180
-    max: 92.3
+    min: 0
+    max: 0
   zAngleLimits:
     active: 0
-    min: -49.6
-    max: 49.6
+    min: 0
+    max: 0
   lengthLimitTargets: []
-  radius: 0
+  radius: 0.05
   sphereColliders: []
   capsuleColliders: []
   panelColliders: []
@@ -7739,10 +7703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.05
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
-  shouldDrawGizmosThisFrame: 1
+  shouldDrawGizmosThisFrame: 0
 --- !u!4 &9112380122758699621
 Transform:
   m_ObjectHideFlags: 0
@@ -7804,10 +7768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.05
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
-  shouldDrawGizmosThisFrame: 1
+  shouldDrawGizmosThisFrame: 0
 --- !u!4 &9112380122772794951
 Transform:
   m_ObjectHideFlags: 0
@@ -7867,10 +7831,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.05
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
-  shouldDrawGizmosThisFrame: 1
+  shouldDrawGizmosThisFrame: 0
 --- !u!114 &9112380123674942145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7883,7 +7847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328bfb8438c749d46ad9174283110a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.03
+  radius: 0.1
   linkedRenderer: {fileID: 0}
   shouldDrawGizmosThisFrame: 0
 --- !u!4 &9112380123674942146
@@ -7962,10 +7926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228c6e846db8bd4ca8c289bdb7565b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
-  height: 0.05
+  radius: 0.075
+  height: 0.3
   linkedRenderer: {fileID: 0}
-  shouldDrawGizmosThisFrame: 1
+  shouldDrawGizmosThisFrame: 0
 --- !u!1 &9112380123996458836
 GameObject:
   m_ObjectHideFlags: 0
