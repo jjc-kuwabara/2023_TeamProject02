@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: 5dabb814f1088734daa88dd08ee780d7
-  - enabled: 1
-    path: Assets/Scenes/StageSelect.unity
-    guid: 5f25dc5d8dab9da4ab1a9b37a0c28844
-  - enabled: 1
-    path: Assets/Scenes/CheckControlStage.unity
-    guid: cbf65a384f5fa284ebf31b4a8c3976b3
+    path: Assets/Scenes/MenuTemplete.unity
+    guid: 9dc08a89f5058414e85a82fb56e75cef
   - enabled: 1
     path: Assets/Scenes/Spring.unity
     guid: 39ede5c7477f51c4db82b6102aa25433
@@ -29,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestStage.unity
     guid: cea946df209ea9c4eb047de2205d474a
-  - enabled: 1
-    path: Assets/Scenes/MenuTemplete.unity
-    guid: 9dc08a89f5058414e85a82fb56e75cef
   m_configObjects: {}

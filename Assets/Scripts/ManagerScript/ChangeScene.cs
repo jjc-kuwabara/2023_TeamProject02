@@ -6,52 +6,32 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     //4/17 メインメニュー項目ができたためほとんど０１２は使わない
-    //0 = タイトル　| 1　＝　ステージ選択　| 2　＝　説明画面　| 3　＝　春ステージ　| 4　＝　夏ステージ　| 5　＝　秋ステージ　| 6　＝　冬ステージ | 7 = テストステージ
-    //8　＝　メインメニューテンプレート
-    public void InstructionsScene()
-    {
-        FadeManager.Instance.LoadSceneIndex(2, 1);
-    }
-
-    public void TitleScene()
+    //0 = メインメニュー関連 | 1 = 春ステージ | 2 = 夏ステージ | 3 = 秋ステージ | 4 = 冬ステージ | 5 = テストステージ
+    public void MenuTempleteScene()
     {
         FadeManager.Instance.LoadSceneIndex(0, 1);
-
     }
 
-    public void StageSelectScene()
+    public void SpringScene()
     {
         FadeManager.Instance.LoadSceneIndex(1, 1);
 
     }
 
-    public void SpringStageScene()
+    public void SummerScene()
+    {
+        FadeManager.Instance.LoadSceneIndex(2, 1);
+
+    }
+
+    public void AutumnScene()
     {
         FadeManager.Instance.LoadSceneIndex(3, 1);
 
     }
-    public void SummerStageScene()
+    public void WinterScene()
     {
         FadeManager.Instance.LoadSceneIndex(4, 1);
     }
 
-    public void AutumnStageScene()
-    {
-        FadeManager.Instance.LoadSceneIndex(5, 1);
-    }
-
-    public void WinterStageScene()
-    {
-        FadeManager.Instance.LoadSceneIndex(6, 1);
-    }
-
-    public void TestStageScene()
-    {
-        FadeManager.Instance.LoadSceneIndex(7, 1);
-    }
-
-    public void MenuScene()
-    {
-        FadeManager.Instance.LoadSceneIndex(8, 1);
-    }
 }
