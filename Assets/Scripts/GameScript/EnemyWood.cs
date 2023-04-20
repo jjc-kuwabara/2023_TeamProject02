@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyWood : MonoBehaviour
@@ -10,19 +8,25 @@ public class EnemyWood : MonoBehaviour
 
     int range;    //生成する花粉をランダムにする
 
+    bool attack;
     public bool hit = false;   //殴られた時のフラグ
     public bool dead = false;   //切り倒されたときのフラグ
     public bool death = false;
 
     Animator animator;
-    
+    Rigidbody rigid;
+    EnemyAttackArea attackArea;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody>();
+        attackArea =  transform.Find("EnemyAttackArea").GetComponent<EnemyAttackArea>();
     }
 
     void Update()
     {
+        MoveAni();
         if (hitCount <= 0 && !death)   //一度だけ処理する
         {
             EnemyMove move = gameObject.GetComponent<EnemyMove>();
@@ -33,8 +37,20 @@ public class EnemyWood : MonoBehaviour
         }
         //Sprinkle();
     }
+    public void MoveAni()
+    {
+        if (rigid.IsSleeping())
+        {
+            animator.SetBool("Move", false);
+        }
+        else
+        {
+            animator.SetBool("Move", true);
+        }
+    }
     public void Hit()
     {
+        animator.SetTrigger("Damage");
         hitCount--;
         hit = true;
     }
@@ -43,6 +59,7 @@ public class EnemyWood : MonoBehaviour
     {
         if (dead)
         {
+            animator.SetTrigger("Die");
             GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1], transform.position, Quaternion.identity);  //燃えるエフェクト
             Destroy(deadEffect, 3);
             Destroy(this.gameObject, 3);
@@ -60,9 +77,10 @@ public class EnemyWood : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
-    { 
+    {
+        animator.SetTrigger("Attack");
         if (other.gameObject.tag == "Player")
-        {
+       {
             GameManager.Instance.Damage(10);
             Debug.Log(other.gameObject.name + "に当たったよ");
             GameObject HitEffect;
@@ -70,7 +88,7 @@ public class EnemyWood : MonoBehaviour
             HitEffect.transform.position = other.gameObject.transform.position;
             HitEffect.transform.parent = other.gameObject.transform;
             Destroy(HitEffect, 1.0f);
-        }
+        }  
         if (other.gameObject.tag == "Weapon") { return; }
     }
 }

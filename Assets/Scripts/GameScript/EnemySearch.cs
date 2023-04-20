@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySearch : MonoBehaviour
 {
     //プレイヤーが侵入しているフラグ
-    public bool playerON;
+    public bool playerON = false;
 
     //colliderコンポーネント
     SphereCollider col;
