@@ -34,4 +34,9 @@ public class ChangeScene : MonoBehaviour
         FadeManager.Instance.LoadSceneIndex(4, 1);
     }
 
+    public void TestScene()
+    {
+        FadeManager.Instance.LoadSceneIndex(5, 1);
+    }
+
 }
