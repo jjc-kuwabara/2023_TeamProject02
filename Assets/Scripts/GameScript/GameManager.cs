@@ -31,6 +31,7 @@ public class GameManager :Singleton <GameManager>
         mainGame = true;
         HPCurrent = HPMax;
         slider.value = 1;
+        SoundManager.Instance.PlayBGM(0);
     }
 
     // Update is called once per frame
@@ -75,6 +76,7 @@ public class GameManager :Singleton <GameManager>
         mainGame = false;
         gameOver = true;
         Debug.Log("ゲームオーバー");
+        SoundManager.Instance.BGMSource.Stop();
     }
 
     public void GameClear()//ゲームクリアのタイムラインを有効
@@ -82,6 +84,7 @@ public class GameManager :Singleton <GameManager>
         mainGame = false;
         gameClear = true;
         Debug.Log("ゲームクリア！");
+        SoundManager.Instance.BGMSource.Stop();
     }
     IEnumerator DelayTime()
     {
