@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
 
     public void InputCheck()
     {
-        if (GameManager.Instance.mainGame) { inputOK = true; }  //mainGame’†‚È‚ç‘€ì‰Â”\
+        if (GameManager.Instance.mainGame && !GameManager.Instance.state_damage) { inputOK = true; }  //mainGame’†‚È‚ç‘€ì‰Â”\
         else { inputOK = false; }
     }
     public void cantmoveing()
@@ -87,8 +87,12 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         animator.SetBool("Run", false);
+        if(GameManager.Instance.state_damage)
+        {
+            animator.SetTrigger("Damage");
 
-        
+        }
+       
     }
 
     void Movement()
