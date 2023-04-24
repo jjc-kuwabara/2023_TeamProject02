@@ -10394,11 +10394,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2696826164052924637, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2696826164052924637, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696826165065311413, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696826165065311413, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696826165065311413, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2696826165523088614, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
       propertyPath: m_RootOrder
@@ -10447,6 +10459,10 @@ PrefabInstance:
     - target: {fileID: 2696826165523088615, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696826165523088615, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c27bc9d98d29245937da53c6faf2b8, type: 3}
