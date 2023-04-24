@@ -23,6 +23,7 @@ public class WeaponAttack : MonoBehaviour
             {
                Debug.Log("çUåÇ");
                other.GetComponent<EnemyWood>().Hit();
+                control.slider.value += 0.1f;
             }
         }     
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerControl : MonoBehaviour
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
     public float healing;  //回復量
+
+    [Header("必殺技ゲージ")]
+    public Slider slider;
 
     //よくわからんけど必要な奴
     CharacterController characon;
@@ -37,6 +41,7 @@ public class PlayerControl : MonoBehaviour
     {
         characon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        slider.value = 0;
     }
 
     void Update()
