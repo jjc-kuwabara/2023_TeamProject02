@@ -43,10 +43,6 @@ public class GameManager :Singleton <GameManager>
         }
         HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
-        if(state_damage)
-        {
-            StartCoroutine(DelayTime());
-        }
     }
 
     public void Damage(float damage)
@@ -85,10 +81,5 @@ public class GameManager :Singleton <GameManager>
         gameClear = true;
         Debug.Log("ゲームクリア！");
         SoundManager.Instance.BGMSource.Stop();
-    }
-    IEnumerator DelayTime()
-    {
-        yield return new WaitForSeconds(1);
-        state_damage = false;
     }
 }

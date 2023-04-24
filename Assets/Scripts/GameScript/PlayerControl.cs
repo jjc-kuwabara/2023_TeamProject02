@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
     public bool cantmove = false; //動けないよ
+    public bool knockBack;  //ダメージモーション中
 
     bool left;  //左向き
     bool right;  //右向き
@@ -87,10 +88,11 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         animator.SetBool("Run", false);
-        if(GameManager.Instance.state_damage)
+        if(GameManager.Instance.state_damage && !knockBack)
         {
+            knockBack = true;
             animator.SetTrigger("Damage");
-
+            StartCoroutine("DamegeOff");
         }
        
     }
@@ -221,6 +223,12 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(1f);
         attack = false;
         cantmove = false;
+    }
+    IEnumerator DamegeOff()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.state_damage = false;
+        knockBack = false;
     }
 
     public void trun()
