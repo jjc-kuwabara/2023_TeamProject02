@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;    //AudioMixerを使用するのに必要
 using SaveData_Settings;    //自前で作ったSaveData_Settingsの使用に必要
+using UnityEngine.UI;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -86,6 +87,7 @@ public class SoundManager : Singleton<SoundManager>
             }
         }
     }
+    
 
     //BGMを外部から呼び出す時
     public void PlayBGM(int i)
@@ -115,6 +117,16 @@ public class SoundManager : Singleton<SoundManager>
         mixer.SetFloat("SEVol", vol_SE[vol2]);
 
         bgmVol = vol_BGM[vol1];
+    }
+    
+    public void SetBgmVolume(float bgmVolume)
+    {
+        BGMSource.volume = bgmVolume;
+    }
+
+    public void SetSeVolume(float seVolume)
+    {
+        SE_SysSource.volume = seVolume;
     }
 
     //画面がフェードアウトする時
