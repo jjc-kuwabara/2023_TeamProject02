@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class DebugManager : MonoBehaviour
 {
+    PlayerControl control;
     void Start()
     {
+        control = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
     }
 
     void Update()
@@ -14,6 +18,7 @@ public class DebugManager : MonoBehaviour
         SceneReset();
         Clear();
         DaM();
+        FullF();
     }
     public void SceneReset()
     {
@@ -30,7 +35,7 @@ public class DebugManager : MonoBehaviour
             GameManager.Instance.GameClear();
         }
     }
- 
+
     public void DaM()
     {
         if (Input.GetKeyDown(KeyCode.V))
@@ -39,5 +44,11 @@ public class DebugManager : MonoBehaviour
             GameManager.Instance.state_damage = false;
         }
     }
-
+    public void FullF()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            control.FullFlame();
+        }
+    }
 }

@@ -17,7 +17,9 @@ public class PlayerControl : MonoBehaviour
     public float healing;  //回復量
 
     [Header("必殺技ゲージ")]
-    public Slider slider;
+    public float flameCharge;   //ゲージの増加量
+    GameObject FlameGauge; //ゲージ
+    public float flameValue;   //ゲージへの代入用
 
     //よくわからんけど必要な奴
     CharacterController characon;
@@ -32,8 +34,8 @@ public class PlayerControl : MonoBehaviour
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
     public bool cantmove = false; //動けないよ
-    public bool knockBack;  //ダメージモーション中
-    public bool invicible;  //無敵
+    public bool knockBack = false;  //ダメージモーション中
+    public bool invicible = false;  //無敵
 
     bool left;  //左向き
     bool right;  //右向き
@@ -42,24 +44,27 @@ public class PlayerControl : MonoBehaviour
     {
         characon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        slider.value = 0;
+        FlameGauge = GameObject.FindWithTag("FlameGauge");
+        FlameGauge.GetComponent<Image>().fillAmount = 0;
+        flameValue = 0;
     }
 
     void Update()
     {
         InputCheck();
-        Animation();
+        Invicible();
         if (inputOK)
         {
             Movement();
             Gravity();
             Jumping();
+            Animation();
             Healing();
             Attack();
+            trun();
         }
-        trun();
         cantmoveing();
-        slider.value = Mathf.Clamp(slider.value, 0, 1);
+        flameValue = Mathf.Clamp(flameValue, 0, 1);   //1を超えないように設定
     }
 
     public void InputCheck()
@@ -237,6 +242,16 @@ public class PlayerControl : MonoBehaviour
         GameManager.Instance.state_damage = false;
         knockBack = false;
     }
+    IEnumerator InvicibleOff()
+    {
+        for (int i = 0; i <100; i++)
+        {
+            flameValue -= 0.01f;
+            FlameGauge.GetComponent<Image>().fillAmount = flameValue;
+             yield return new WaitForSeconds(0.3f);
+        }
+        invicible = false;
+    }
 
     public void trun()
     {
@@ -269,12 +284,24 @@ public class PlayerControl : MonoBehaviour
     } 
     public void Invicible()
     {
-        if(slider.value == 1)
+        if (FlameGauge.GetComponent<Image>().fillAmount == 1)
         {
             invicible = true;
+            StartCoroutine("InvicibleOff");
         }
     }
-  
+    public void FlameCharge()
+    {
+        flameValue += flameCharge;
+        FlameGauge.GetComponent<Image>().fillAmount = flameValue;
+    }
+    public void FullFlame()
+    {
+            flameValue = 1;
+            FlameGauge.GetComponent<Image>().fillAmount = 1;
+    }
+
+
     public void Dead(bool flg)
     {
         characon.enabled = flg;

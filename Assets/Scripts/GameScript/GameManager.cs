@@ -24,7 +24,7 @@ public class GameManager :Singleton <GameManager>
     public bool state_damage = false;
     public bool hpFull;  //HPが最大かを判定するフラグ
 
-    public Slider slider;
+    GameObject HPGauge;
 
     private GameObject[] enemyobject;
     // Start is called before the first frame update
@@ -32,7 +32,8 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = true;
         HPCurrent = HPMax;
-        slider.value = 1;
+        HPGauge = GameObject.FindWithTag("HPGauge");
+        HPGauge.GetComponent<Image>().fillAmount = 1;
         SoundManager.Instance.PlayBGM(0);
     }
 
@@ -47,7 +48,7 @@ public class GameManager :Singleton <GameManager>
         enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyobject.Length <= 0)
         {
-            GameClear();
+            //GameClear();
         }
 
         HPCheck();
@@ -58,7 +59,8 @@ public class GameManager :Singleton <GameManager>
     {
         HPCurrent -= damage;
 
-        slider.value = HPCurrent / HPMax;
+        float HPvalue = HPCurrent / HPMax;
+        HPGauge.GetComponent<Image>().fillAmount = HPvalue;
 
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
     }
@@ -66,7 +68,8 @@ public class GameManager :Singleton <GameManager>
     {
         HPCurrent += heal;
 
-        slider.value = HPCurrent / HPMax;
+        float HPvalue = HPCurrent / HPMax;
+        HPGauge.GetComponent<Image>().fillAmount = HPvalue;
 
         Debug.Log("HP回復");
     }
