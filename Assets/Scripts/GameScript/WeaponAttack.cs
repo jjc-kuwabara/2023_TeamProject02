@@ -6,6 +6,7 @@ public class WeaponAttack : MonoBehaviour
 {
 
     PlayerControl control;
+    public float charge = 0.2f;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class WeaponAttack : MonoBehaviour
             {
                Debug.Log("çUåÇ");
                other.GetComponent<EnemyWood>().Hit();
-                control.slider.value += 0.1f;
+                control.slider.value += charge;
             }
         }     
     }

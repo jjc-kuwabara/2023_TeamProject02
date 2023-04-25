@@ -51,7 +51,7 @@ public class EnemyMove : MonoBehaviour
         // Transform mySon = transform.GetChild(1);
         // search = searchObject.GetComponent<EnemySearch>();
     }
-void Update()
+    void Update()
     {
         // ゲームごとの移動法を実行
         switch (type)

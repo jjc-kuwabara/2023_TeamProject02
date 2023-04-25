@@ -16,12 +16,14 @@ public class EnemyWood : MonoBehaviour
     Animator animator;
     Rigidbody rigid;
     EnemyAttackArea attackArea;
+    PlayerControl control;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         attackArea =  transform.Find("EnemyAttackArea").GetComponent<EnemyAttackArea>();
+        control = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
     }
 
     void Update()
@@ -47,7 +49,7 @@ public class EnemyWood : MonoBehaviour
         {
             animator.SetBool("Move", true);
         }
-        if(attackArea.playerIn)
+        if(attackArea.playerIn && !GameManager.Instance.state_damage)
         {
             animator.SetTrigger("Attack");
             attack = true;
@@ -83,7 +85,7 @@ public class EnemyWood : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && attack)
+        if (other.gameObject.tag == "Player" && attack && !control.invicible)
        {
             GameManager.Instance.state_damage = true;
             GameManager.Instance.Damage(10);

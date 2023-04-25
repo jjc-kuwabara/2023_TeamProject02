@@ -33,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     public bool attack = false;  //攻撃可能
     public bool cantmove = false; //動けないよ
     public bool knockBack;  //ダメージモーション中
+    public bool invicible;  //無敵
 
     bool left;  //左向き
     bool right;  //右向き
@@ -58,6 +59,7 @@ public class PlayerControl : MonoBehaviour
         }
         trun();
         cantmoveing();
+        slider.value = Mathf.Clamp(slider.value, 0, 1);
     }
 
     public void InputCheck()
@@ -265,6 +267,13 @@ public class PlayerControl : MonoBehaviour
             }
         }
     } 
+    public void Invicible()
+    {
+        if(slider.value == 1)
+        {
+            invicible = true;
+        }
+    }
   
     public void Dead(bool flg)
     {
