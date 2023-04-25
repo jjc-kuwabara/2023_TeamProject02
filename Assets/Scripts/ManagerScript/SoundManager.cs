@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;    //AudioMixerを使用するのに必要
 using SaveData_Settings;    //自前で作ったSaveData_Settingsの使用に必要
+using UnityEngine.UI;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -86,6 +87,7 @@ public class SoundManager : Singleton<SoundManager>
             }
         }
     }
+    
 
     //BGMを外部から呼び出す時
     public void PlayBGM(int i)
