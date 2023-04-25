@@ -118,16 +118,6 @@ public class SoundManager : Singleton<SoundManager>
 
         bgmVol = vol_BGM[vol1];
     }
-    
-    public void SetBgmVolume(float bgmVolume)
-    {
-        BGMSource.volume = bgmVolume;
-    }
-
-    public void SetSeVolume(float seVolume)
-    {
-        SE_SysSource.volume = seVolume;
-    }
 
     //画面がフェードアウトする時
     //音量も一緒にフェードアウト フェードするのはBGMのみ
