@@ -25,6 +25,8 @@ public class GameManager :Singleton <GameManager>
     public bool hpFull;  //HP‚ªÅ‘å‚©‚ğ”»’è‚·‚éƒtƒ‰ƒO
 
     public Slider slider;
+
+    private GameObject[] enemyobject;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +39,17 @@ public class GameManager :Singleton <GameManager>
     // Update is called once per frame
     void Update()
     {
-        if(HPCurrent <= 0)
+        if (HPCurrent <= 0)
         {
             GameOver();
         }
+
+        enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemyobject.Length <= 0)
+        {
+            GameClear();
+        }
+
         HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
     }
