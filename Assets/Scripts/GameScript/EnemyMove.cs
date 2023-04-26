@@ -104,7 +104,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     // ルート移動の処理
-    void routePatrol()
+     void routePatrol()
     {
         // 目標地点に近づいたら次の拠点を設定
         if (nav.pathPending == false && nav.remainingDistance <= 0.1f)
@@ -117,7 +117,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
         //巡回しつつ追跡もする
-        void PatrolAndChase()
+         void PatrolAndChase()
         {
             //索敵範囲内に侵入したら追跡
             if (seach.playerON)
@@ -134,22 +134,22 @@ public class EnemyMove : MonoBehaviour
         }
 
     //
-void PlayerRun()
-    {
-        if (target != null)
+        public void PlayerRun()
         {
-            if (seach.playerON)
+             if (target != null)
             {
+                if (seach.playerON)
+                {
                 //逃げ先のポジションを決める
                 Vector3 dir = transform.position - target.transform.position;
 
                 //行き先を設定
                 nav.SetDestination(transform.position + dir * 0.3f);
-            }
-            else
-            {
+                }
+                else
+                {
                 nav.SetDestination(transform.position);
+                }
             }
         }
-    }
 }
