@@ -48,7 +48,7 @@ public class GameManager :Singleton <GameManager>
         enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyobject.Length <= 0)
         {
-            //GameClear();
+            GameClear();
         }
 
         HPCheck();

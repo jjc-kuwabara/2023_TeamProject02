@@ -11,6 +11,10 @@ public class PlayerControl : MonoBehaviour
     float hor;
     public float riseTime = 1;
     public float gravity = 10;
+    public int attackPower = 1;
+    public float invicibleSec = 30;
+    public float flameGaugeRefleshSec = 0.3f;
+    public float invicibleCurrentTimer = 0;
 
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
@@ -21,7 +25,7 @@ public class PlayerControl : MonoBehaviour
     GameObject FlameGauge; //ゲージ
     public float flameValue;   //ゲージへの代入用
 
-    //よくわからんけど必要な奴
+    //操作に必要
     CharacterController characon;
     Animator animator;
     bool Jumpflg;
@@ -52,13 +56,13 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         InputCheck();
+        Animation();
         Invicible();
         if (inputOK)
         {
             Movement();
             Gravity();
             Jumping();
-            Animation();
             Healing();
             Attack();
             trun();
@@ -105,6 +109,7 @@ public class PlayerControl : MonoBehaviour
             knockBack = true;
             animator.SetTrigger("Damage");
             StartCoroutine("DamegeOff");
+            return;
         }
        
     }
@@ -238,19 +243,23 @@ public class PlayerControl : MonoBehaviour
     }
     IEnumerator DamegeOff()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.5f);
         GameManager.Instance.state_damage = false;
         knockBack = false;
     }
     IEnumerator InvicibleOff()
     {
-        for (int i = 0; i <100; i++)
+        while (invicibleCurrentTimer > 0)
         {
-            flameValue -= 0.01f;
+            flameValue = invicibleCurrentTimer / invicibleSec;
             FlameGauge.GetComponent<Image>().fillAmount = flameValue;
-             yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(flameGaugeRefleshSec);
+            invicibleCurrentTimer -= flameGaugeRefleshSec;
         }
         invicible = false;
+        attackPower = 1;
+        flameValue = 0f;
+        FlameGauge.GetComponent<Image>().fillAmount = flameValue;
     }
 
     public void trun()
@@ -284,17 +293,23 @@ public class PlayerControl : MonoBehaviour
     } 
     public void Invicible()
     {
-        if (FlameGauge.GetComponent<Image>().fillAmount == 1)
+        if (FlameGauge.GetComponent<Image>().fillAmount == 1 && !invicible)
         {
             invicible = true;
+            attackPower = 3;
+            invicibleCurrentTimer = invicibleSec;
             StartCoroutine("InvicibleOff");
         }
     }
     public void FlameCharge()
     {
-        flameValue += flameCharge;
-        FlameGauge.GetComponent<Image>().fillAmount = flameValue;
+        if (!invicible)
+        { 
+            flameValue += flameCharge;
+            FlameGauge.GetComponent<Image>().fillAmount = flameValue;
+        } 
     }
+
     public void FullFlame()
     {
             flameValue = 1;

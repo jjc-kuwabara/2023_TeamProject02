@@ -58,7 +58,7 @@ public class EnemyWood : MonoBehaviour
     public void Hit()
     {
         animator.SetTrigger("Damage");
-        hitCount--;
+        hitCount -= control.attackPower;
         hit = true;
     }
 

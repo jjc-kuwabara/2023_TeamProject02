@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - HPGauge
   - FlameGauge
+  - PollenEnemy
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,12 @@ public class WeaponAttack : MonoBehaviour
                other.GetComponent<EnemyWood>().Hit();
                 control.FlameCharge();
             }
+            if (other.tag == "PollenEnemy")
+            {
+                Debug.Log("çUåÇ");
+                other.GetComponent<EnemyPollen>().Hit();
+                control.FlameCharge();
+            }
         }     
     }
 }
