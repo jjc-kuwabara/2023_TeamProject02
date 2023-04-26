@@ -7,14 +7,16 @@ public class PlayerControl : MonoBehaviour
 {
     //変動できる数値　変数
     public float moveSpeed = 10;
+    float defMoveSp;
     public float JumpPower = 10;
+    float defJumpPow;
     float hor;
     public float riseTime = 1;
     public float gravity = 10;
-    public int attackPower = 1;
-    public float invicibleSec = 30;
-    public float flameGaugeRefleshSec = 0.3f;
-    public float invicibleCurrentTimer = 0;
+    public int attackPower = 1;  //攻撃力
+    public float invicibleSec = 30;  //必殺技の無敵時間
+    public float flameGaugeRefleshSec = 0.3f;  //ゲージの減る量
+    public float invicibleCurrentTimer = 0;  //ゲージのタイマー
 
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
@@ -80,13 +82,15 @@ public class PlayerControl : MonoBehaviour
     {
         if (cantmove)
         {
+            defMoveSp = moveSpeed;
+            defJumpPow = JumpPower;
             moveSpeed = 0;
             JumpPower = 0;
         }
         else
         {
-            moveSpeed = 10;
-            JumpPower = 5;
+            moveSpeed = defMoveSp;
+            JumpPower = defJumpPow;
         }
          
     }
