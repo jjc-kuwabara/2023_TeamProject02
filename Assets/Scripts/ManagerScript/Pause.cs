@@ -24,11 +24,7 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (pause)
-        {
-            StartGame();
-        }
-        else
+        if (!pause)
         {
             PauseGame();
         }
@@ -50,15 +46,12 @@ public class Pause : MonoBehaviour
     }
     public void StartGame()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //再開
-            Time.timeScale = 1;
-            pause = false;
-            Debug.Log("再開");
-            canvas[0].SetActive(true);
-            canvas[1].SetActive(false);
-        }
+       //再開
+       Time.timeScale = 1;
+       pause = false;
+       Debug.Log("再開");
+       canvas[0].SetActive(true);
+       canvas[1].SetActive(false);
     }
 
     void CanvasInit()

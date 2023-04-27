@@ -7,9 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     //•Ï“®‚Å‚«‚é”’l@•Ï”
     public float moveSpeed = 10;
-    float defMoveSp;
-    public float JumpPower = 10;
-    float defJumpPow;
+    public float JumpPower = 5;
     float hor;
     public float riseTime = 1;
     public float gravity = 10;
@@ -82,15 +80,13 @@ public class PlayerControl : MonoBehaviour
     {
         if (cantmove)
         {
-            defMoveSp = moveSpeed;
-            defJumpPow = JumpPower;
             moveSpeed = 0;
             JumpPower = 0;
         }
         else
         {
-            moveSpeed = defMoveSp;
-            JumpPower = defJumpPow;
+            moveSpeed = 10;
+            JumpPower = 5;
         }
          
     }
