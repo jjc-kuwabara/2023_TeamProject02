@@ -7,8 +7,8 @@ public class GameManager :Singleton <GameManager>
 {
     //プレイヤーの変数（体力など
     [Header("PlayerのHP")]
-    public float HPCurrent = 100;
-    public float HPMax = 100;
+    public float HPCurrent = 10;
+    public float HPMax = 10;
     public float HPMin = 0;
 
     //ゲームのクリアやシーンなど必要なフラグ
@@ -20,7 +20,7 @@ public class GameManager :Singleton <GameManager>
     public bool gameOver = false;   //ゲームオーバー
 
     //よくわからないけど必要なフラグかと思ったけど、重要
-    [Header("ゲームないのフラグ")]
+    [Header("ゲーム内のフラグ")]
     public bool state_damage = false;
     public bool hpFull;  //HPが最大かを判定するフラグ
 

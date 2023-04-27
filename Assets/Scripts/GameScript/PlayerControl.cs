@@ -7,7 +7,9 @@ public class PlayerControl : MonoBehaviour
 {
     //変動できる数値　変数
     public float moveSpeed = 10;
+    float moveSpeSave;
     public float JumpPower = 5;
+    float jumpPowSave;
     float hor;
     public float riseTime = 1;
     public float gravity = 10;
@@ -18,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
-    public float healing;  //回復量
+    public float healing = 1;  //回復量
 
     [Header("必殺技ゲージ")]
     public float flameCharge;   //ゲージの増加量
@@ -51,6 +53,8 @@ public class PlayerControl : MonoBehaviour
         FlameGauge = GameObject.FindWithTag("FlameGauge");
         FlameGauge.GetComponent<Image>().fillAmount = 0;
         flameValue = 0;
+        moveSpeSave = moveSpeed;
+        jumpPowSave = JumpPower;
     }
 
     void Update()
@@ -85,8 +89,8 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            moveSpeed = 10;
-            JumpPower = 5;
+            moveSpeed = moveSpeSave;
+            JumpPower = jumpPowSave;
         }
          
     }
@@ -108,7 +112,7 @@ public class PlayerControl : MonoBehaviour
         {
             knockBack = true;
             animator.SetTrigger("Damage");
-            StartCoroutine("DamegeOff");
+            StartCoroutine("DamageOff");
             return;
         }
        
@@ -241,7 +245,7 @@ public class PlayerControl : MonoBehaviour
         attack = false;
         cantmove = false;
     }
-    IEnumerator DamegeOff()
+    IEnumerator DamageOff()
     {
         yield return new WaitForSeconds(3.5f);
         GameManager.Instance.state_damage = false;

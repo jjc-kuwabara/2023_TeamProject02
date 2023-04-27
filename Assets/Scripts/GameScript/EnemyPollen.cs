@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyPollen : MonoBehaviour
 {
+    float attackReflesh = 1f;
+
     public bool dead = false;   //Ø‚è“|‚³‚ê‚½‚Æ‚«‚Ìƒtƒ‰ƒO
     public bool attack = false;
 
@@ -24,6 +26,14 @@ public class EnemyPollen : MonoBehaviour
         {
             attack = true;
         }
+        if (attack)
+        {
+            attackReflesh -= Time.deltaTime;
+            if (attackReflesh <= 0)
+            {
+                attack = false;
+            }
+        }
     }
     public void Hit()
     {
@@ -36,7 +46,7 @@ public class EnemyPollen : MonoBehaviour
         if (other.gameObject.tag == "Player" && attack && !control.invicible)
         {
             GameManager.Instance.state_damage = true;
-            GameManager.Instance.Damage(10);
+            GameManager.Instance.Damage(1);
             Debug.Log(other.gameObject.name + "‚É“–‚½‚Á‚½");
             GameObject HitEffect;
             HitEffect = Instantiate(EffectManager.Instance.StageFX[0], transform.position, Quaternion.identity);
@@ -44,6 +54,7 @@ public class EnemyPollen : MonoBehaviour
             HitEffect.transform.parent = other.gameObject.transform;
             Destroy(HitEffect, 1.0f);
             attack = false;
+            return;
         }
         if (other.gameObject.tag == "Weapon") { return; }
     }
