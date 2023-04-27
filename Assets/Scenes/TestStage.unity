@@ -605,6 +605,50 @@ PrefabInstance:
       propertyPath: bgmClip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 848dc4eee97e495459724e1cab00b166, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_SysClip.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_SysClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 90f27d539968eb34fa159867cb497234, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_SysClip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ef06cc4642e8834ebf8c7dde806988b, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_SysClip.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_SysClip.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c6f67ec9b55eb4b4c8f88f963900ddc3, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f76af6f6b5ca9bd49ba2b965d1079995, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ba2b0a39737263e4099277f80fa901a3, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19dce53fa6d03754bb2f2e19791d1e00, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc7e9cf204832ee4ba232f61a4249f82, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
 --- !u!4 &632490150 stripped

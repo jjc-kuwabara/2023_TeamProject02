@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -59,6 +60,11 @@ public class MainMenuManager : MonoBehaviour
 
         if (currentFocus == previousFocus) return;//前回と変わらない場合は何もせず終了
 
+        if (currentFocus != previousFocus)
+        {
+            SoundManager.Instance.PlaySE_Sys(0);
+            return;
+        }
         if(currentFocus == null)//フォーカス対象がなかった場合、前フレームまで選択していた項目を選択状態に
         {
             EventSystem.current.SetSelectedGameObject(previousFocus);

@@ -121,7 +121,8 @@ public class PlayerControl : MonoBehaviour
     void Movement()
     {
         hor = Input.GetAxis("Horizontal");     //水平（左右）
-
+        SoundManager.Instance.PlaySE_Game(4);
+        
         /*Debug.Log("左右=" + hor);
         Debug.Log("上下=" + ver);*/
 
@@ -278,6 +279,7 @@ public class PlayerControl : MonoBehaviour
                 Vector3 rote = myTransform.localEulerAngles;
                 rote.y = 90f;
                 myTransform.eulerAngles = rote;  //右向き
+                
                 return;
             }
         }
