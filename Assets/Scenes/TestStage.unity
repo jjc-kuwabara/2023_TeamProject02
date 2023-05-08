@@ -599,19 +599,27 @@ PrefabInstance:
       objectReference: {fileID: 24300002, guid: e2b8441db18a36e48b86c17c610aa968, type: 2}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: bgmClip.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: bgmClip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 848dc4eee97e495459724e1cab00b166, type: 3}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: bgmClip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 930b6c7bcc6897848ae854b86ab9cd37, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: bgmClip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e7cfc0dd81a98f34e97cf997d8fc25fe, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_SysClip.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_GameClip.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_SysClip.Array.data[0]
@@ -624,11 +632,11 @@ PrefabInstance:
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_SysClip.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 657a41db7b65c72408193d9120d023d6, type: 3}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_SysClip.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 3362920ea4caca9489747f5d7fdd07b1, type: 3}
     - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
       propertyPath: se_GameClip.Array.data[0]
       value: 
@@ -649,6 +657,10 @@ PrefabInstance:
       propertyPath: se_GameClip.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: dc7e9cf204832ee4ba232f61a4249f82, type: 3}
+    - target: {fileID: 3432736688471764878, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
+      propertyPath: se_GameClip.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 21df6b478ea0c9f49ab40ebbe01c93e6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d294bdadf964fca41b8cf64bbee89032, type: 3}
 --- !u!4 &632490150 stripped
