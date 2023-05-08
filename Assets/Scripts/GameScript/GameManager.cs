@@ -34,7 +34,7 @@ public class GameManager :Singleton <GameManager>
         HPCurrent = HPMax;
         HPGauge = GameObject.FindWithTag("HPGauge");
         HPGauge.GetComponent<Image>().fillAmount = 1;
-        SoundManager.Instance.PlayBGM(0);
+        
     }
 
     // Update is called once per frame

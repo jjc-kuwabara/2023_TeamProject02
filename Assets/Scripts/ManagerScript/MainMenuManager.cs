@@ -49,8 +49,8 @@ public class MainMenuManager : MonoBehaviour
         canvas[nextMenu].SetActive(true);//次のメニューを表示
 
         EventSystem.current.SetSelectedGameObject(focusobject[nextMenu]);//次のメニューの初期カーソル位置
-         
 
+        SoundManager.Instance.PlaySE_Sys(1);
          
     }
     //フォーカス対象のチェック
