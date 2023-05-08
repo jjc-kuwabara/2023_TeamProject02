@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Pause : MonoBehaviour
+public class Pause : Singleton<Pause>
 {
     [Header("ƒLƒƒƒ“ƒoƒX")]
     [SerializeField] GameObject[] canvas;

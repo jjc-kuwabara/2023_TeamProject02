@@ -15,18 +15,14 @@ public class DebugManager : MonoBehaviour
 
     void Update()
     {
-        SceneReset();
         Clear();
         DaM();
         FullF();
     }
     public void SceneReset()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-       
+        Pause.Instance.StartGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void Clear()
     {

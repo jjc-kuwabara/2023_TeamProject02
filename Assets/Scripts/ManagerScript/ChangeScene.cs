@@ -9,6 +9,7 @@ public class ChangeScene : MonoBehaviour
     //0 = メインメニュー関連 | 1 = 春ステージ | 2 = 夏ステージ | 3 = 秋ステージ | 4 = 冬ステージ | 5 = テストステージ
     public void MenuTempleteScene()
     {
+        Pause.Instance.StartGame();
         FadeManager.Instance.LoadSceneIndex(0, 1);
     }
 
