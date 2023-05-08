@@ -115,7 +115,16 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine("DamageOff");
             return;
         }
-       
+        if(GameManager.Instance.gameClear)
+        {
+            animator.SetTrigger("Win");
+            return;
+        }
+       if(GameManager.Instance.gameOver)
+        {
+            animator.SetTrigger("Death");
+            return;
+        }
     }
 
     void Movement()
