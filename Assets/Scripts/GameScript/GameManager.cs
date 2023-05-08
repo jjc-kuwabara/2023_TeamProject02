@@ -61,7 +61,7 @@ public class GameManager :Singleton <GameManager>
 
         float HPvalue = HPCurrent / HPMax;
         HPGauge.GetComponent<Image>().fillAmount = HPvalue;
-
+        SoundManager.Instance.PlaySE_Sys(7);
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
     }
     public void Heal(float heal)
@@ -70,7 +70,7 @@ public class GameManager :Singleton <GameManager>
 
         float HPvalue = HPCurrent / HPMax;
         HPGauge.GetComponent<Image>().fillAmount = HPvalue;
-
+        SoundManager.Instance.PlaySE_Sys(6);
         Debug.Log("HP回復");
     }
     public void HPCheck()  //HPが最大か判定
