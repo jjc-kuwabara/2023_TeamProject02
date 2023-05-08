@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &376393147590705124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69988754563887034}
+  - component: {fileID: 376393147590705127}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &69988754563887034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376393147590705124}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376393147590705127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376393147590705124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f66832066a3954798dbb0554a7d8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: e2b8441db18a36e48b86c17c610aa968, type: 2}
+  MasterGroup: {fileID: 24300002, guid: e2b8441db18a36e48b86c17c610aa968, type: 2}
+  BGMGroup: {fileID: -6143237760468897455, guid: e2b8441db18a36e48b86c17c610aa968, type: 2}
+  SEGroup: {fileID: 1545945166906940546, guid: e2b8441db18a36e48b86c17c610aa968, type: 2}
+  bgmClip:
+  - {fileID: 8300000, guid: 848dc4eee97e495459724e1cab00b166, type: 3}
+  - {fileID: 8300000, guid: 930b6c7bcc6897848ae854b86ab9cd37, type: 3}
+  - {fileID: 8300000, guid: e7cfc0dd81a98f34e97cf997d8fc25fe, type: 3}
+  se_SysClip:
+  - {fileID: 8300000, guid: 90f27d539968eb34fa159867cb497234, type: 3}
+  - {fileID: 8300000, guid: 9ef06cc4642e8834ebf8c7dde806988b, type: 3}
+  - {fileID: 8300000, guid: 657a41db7b65c72408193d9120d023d6, type: 3}
+  - {fileID: 8300000, guid: 3362920ea4caca9489747f5d7fdd07b1, type: 3}
+  se_GameClip:
+  - {fileID: 8300000, guid: c6f67ec9b55eb4b4c8f88f963900ddc3, type: 3}
+  - {fileID: 8300000, guid: f76af6f6b5ca9bd49ba2b965d1079995, type: 3}
+  - {fileID: 8300000, guid: ba2b0a39737263e4099277f80fa901a3, type: 3}
+  - {fileID: 8300000, guid: 19dce53fa6d03754bb2f2e19791d1e00, type: 3}
+  - {fileID: 8300000, guid: dc7e9cf204832ee4ba232f61a4249f82, type: 3}
+  - {fileID: 8300000, guid: 21df6b478ea0c9f49ab40ebbe01c93e6, type: 3}
