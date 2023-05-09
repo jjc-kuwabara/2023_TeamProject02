@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
     void Update()
     {
         FocusCheck();
+  
     }
 
     void CanvasInIt()
@@ -76,6 +77,7 @@ public class MainMenuManager : MonoBehaviour
         previousFocus = EventSystem.current.currentSelectedGameObject;
     }
 
+    
     //ƒQ[ƒ€I—¹‚Ìˆ—
     public void Quit()
     {
