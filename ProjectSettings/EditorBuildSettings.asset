@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuTemplete.unity
     guid: 9dc08a89f5058414e85a82fb56e75cef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Spring.unity
     guid: 39ede5c7477f51c4db82b6102aa25433
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Summer.unity
     guid: bb6b879347eebcf47a94f678af7e8b99
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Autumn.unity
     guid: c85c13cb8df0efa44ba6eb59fc821a0a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Winter.unity
     guid: 8099cd36561b76446ae55d47517f0d31
   - enabled: 1

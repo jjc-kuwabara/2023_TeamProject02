@@ -32,7 +32,8 @@ public class EnemyWood : MonoBehaviour
 
     void Update()
     {
-        MoveAni();
+        if (!dead) { MoveAni(); }
+       
         if(attack)
         {
             attackReflesh -= Time.deltaTime;
