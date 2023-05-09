@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: "Team\u82B1\u7C89"
+  companyName: Team02
   productName: 2023_TeamProject02
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
