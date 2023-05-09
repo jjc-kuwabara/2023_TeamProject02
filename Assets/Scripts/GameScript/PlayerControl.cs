@@ -84,7 +84,8 @@ public class PlayerControl : MonoBehaviour
 
     public void InputCheck()
     {
-        if (GameManager.Instance.mainGame && !GameManager.Instance.state_damage) { inputOK = true; }  //mainGame’†‚È‚ç‘€ì‰Â”\
+        if (GameManager.Instance.mainGame && !GameManager.Instance.state_damage) 
+        { inputOK = true; }  //mainGame’†‚È‚ç‘€ì‰Â”\
         else { inputOK = false; }
     }
     public void cantmoveing()
