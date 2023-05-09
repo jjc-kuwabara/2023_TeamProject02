@@ -29,7 +29,7 @@ public class MainMenuManager : MonoBehaviour
     void Update()
     {
         FocusCheck();
-        soundSE();
+  
     }
 
     void CanvasInIt()
@@ -77,13 +77,7 @@ public class MainMenuManager : MonoBehaviour
         previousFocus = EventSystem.current.currentSelectedGameObject;
     }
 
-    void soundSE()
-    {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SoundManager.Instance.PlaySE_Sys(0);
-        }
-    }
+    
     //ÉQÅ[ÉÄèIóπÇÃèàóù
     public void Quit()
     {
