@@ -29,7 +29,7 @@ public class GameManager :Singleton <GameManager>
     [Header("MainGameÇ≈égÇ§")]
     [SerializeField] GameObject mainCamera;
     
-    private GameObject[] enemyobject;
+    private GameObject[] enemyObject;
 
     [SerializeField] GameObject axe; //TimelineíÜÇ…ïêäÌÇâBÇ∑ÇΩÇﬂ
 
@@ -41,6 +41,10 @@ public class GameManager :Singleton <GameManager>
     [SerializeField] PlayableDirector TL_GameStart;
     [SerializeField] PlayableDirector TL_GameClear;
     [SerializeField] PlayableDirector TL_GameOver;
+    [Header("TimelineCamera")]
+    [SerializeField] GameObject startCamera;
+    [SerializeField] GameObject clearCamera;
+    [SerializeField] GameObject overCamera;
     void Start()
     {
         mainCamera.SetActive(false);
@@ -48,6 +52,9 @@ public class GameManager :Singleton <GameManager>
         startCanvas.SetActive(true);
         clearCanvas.SetActive(false);
         overCanvas.SetActive(false);
+        startCamera.SetActive(true);
+        clearCamera.SetActive(false);
+        overCamera.SetActive(false);
         Pause.Instance.CanvasInit();
         TL_GameStart.Play();
         HPCurrent = HPMax;
@@ -56,13 +63,13 @@ public class GameManager :Singleton <GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (HPCurrent <= 0)
+        if (HPCurrent <= 0 && !gameOver)
         {
             GameOver();
         }
 
-        enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemyobject.Length <= 0)
+        enemyObject = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemyObject.Length <= 0 && !gameClear)
         {
             GameClear();
         }
@@ -76,20 +83,26 @@ public class GameManager :Singleton <GameManager>
     public void MainGame()
     {
         mainGame = true;
+        SoundManager.Instance.PlayBGM(0);
         Pause.Instance.canvas[0].SetActive(true);
         startCanvas.SetActive(false);
         HPGauge = GameObject.FindWithTag("HPGauge");
         HPGauge.GetComponent<Image>().fillAmount = 1;
         axe.SetActive(true);
+        startCamera.SetActive(false);
         mainCamera.SetActive(true);
     }
     public void DemoSkip()
     {
         mainGame = true;
+        SoundManager.Instance.PlayBGM(0);
         TL_GameStart.Stop();
         Pause.Instance.canvas[0].SetActive(true);
         startCanvas.SetActive(false);
+        HPGauge = GameObject.FindWithTag("HPGauge");
+        HPGauge.GetComponent<Image>().fillAmount = 1;
         axe.SetActive(true);
+        startCamera.SetActive(false);
         mainCamera.SetActive(true);
     }
     public void Damage(float damage)
@@ -120,7 +133,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameOver = true;
+        axe.SetActive(false);
         mainCamera.SetActive(false);
+        overCamera.SetActive(true);
         Pause.Instance.canvas[0].SetActive(false);
         overCanvas.SetActive(true);
         TL_GameOver.Play();
@@ -131,7 +146,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameClear = true;
+        axe.SetActive(false);
         mainCamera.SetActive(false);
+        clearCamera.SetActive(true);
         Pause.Instance.canvas[0].SetActive(false);
         clearCanvas.SetActive(true);
         TL_GameClear.Play();

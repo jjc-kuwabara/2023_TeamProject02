@@ -81,6 +81,7 @@ public class EnemyWood : MonoBehaviour
         {
             animator.SetTrigger("Die");
             GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1], transform.position, Quaternion.identity);  //燃えるエフェクト
+            SoundManager.Instance.PlaySE_Game(5);
             Destroy(deadEffect, 3);
             Destroy(this.gameObject, 3);
         }
