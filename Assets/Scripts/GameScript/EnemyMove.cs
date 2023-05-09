@@ -78,31 +78,33 @@ public class EnemyMove : MonoBehaviour
     }
     void PlayerChase()
     {
-        // ターゲットが存在している時のみ
-        if (target != null)
+        if (GameManager.Instance.mainGame)
         {
-            if (seach.playerON)
+            // ターゲットが存在している時のみ
+            if (target != null)
             {
-                // プレイヤーがダメージ中じゃなければ
-                if (!GameManager.Instance.state_damage)
+                if (seach.playerON)
                 {
-                    // 行き先を設定(行き先のポジション)
-                    nav.SetDestination(target.transform.position);
+                    // プレイヤーがダメージ中じゃなければ
+                    if (!GameManager.Instance.state_damage)
+                    {
+                        // 行き先を設定(行き先のポジション)
+                        nav.SetDestination(target.transform.position);
+
+                    }
 
                 }
+                else
+                {
+                    nav.SetDestination(transform.position);
+                }
+                return;
 
             }
-            else
-            {
-                nav.SetDestination(transform.position);
-            }
-            return;
+            Debug.LogWarning("ターゲットが存在していない");
 
         }
-        Debug.LogWarning("ターゲットが存在していない");
-
     }
-
     // ルート移動の処理
      void routePatrol()
     {
