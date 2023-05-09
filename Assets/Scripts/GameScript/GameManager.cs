@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class GameManager :Singleton <GameManager>
 {
@@ -27,14 +28,22 @@ public class GameManager :Singleton <GameManager>
     GameObject HPGauge;
 
     private GameObject[] enemyobject;
-    // Start is called before the first frame update
+
+    [SerializeField] GameObject axe; //Timeline中に武器を隠すため
+
+    [Header("TimelineCanvas")]
+    [SerializeField] GameObject timelinecanvas;
+    [Header("TimelineDirecter")]
+    [SerializeField] PlayableDirector TL_GameStart;
+    [SerializeField] PlayableDirector TL_GameClear;
+    [SerializeField] PlayableDirector TL_GameOver;
     void Start()
     {
-        mainGame = true;
+        axe.SetActive(false);
+        timelinecanvas.SetActive(true);
+        Pause.Instance.CanvasInit();
+        TL_GameStart.Play();
         HPCurrent = HPMax;
-        HPGauge = GameObject.FindWithTag("HPGauge");
-        HPGauge.GetComponent<Image>().fillAmount = 1;
-        
     }
 
     // Update is called once per frame
@@ -50,11 +59,30 @@ public class GameManager :Singleton <GameManager>
         {
             GameClear();
         }
-
+        if(TL_GameStart.state == PlayState.Playing && Input.GetKeyDown(KeyCode.T))
+        {
+            DemoSkip();
+        }
         HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
     }
-
+    public void MainGame()
+    {
+        mainGame = true;
+        Pause.Instance.canvas[0].SetActive(true);
+        timelinecanvas.SetActive(false);
+        HPGauge = GameObject.FindWithTag("HPGauge");
+        HPGauge.GetComponent<Image>().fillAmount = 1;
+        axe.SetActive(true);
+    }
+    public void DemoSkip()
+    {
+        mainGame = true;
+        TL_GameStart.Stop();
+        Pause.Instance.canvas[0].SetActive(true);
+        timelinecanvas.SetActive(false);
+        axe.SetActive(true);
+    }
     public void Damage(float damage)
     {
         HPCurrent -= damage;
@@ -83,7 +111,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameOver = true;
-        Debug.Log("ゲームオーバー");
+        Pause.Instance.canvas[0].SetActive(false);
+        timelinecanvas.SetActive(true);
+        TL_GameOver.Play();
         SoundManager.Instance.BGMSource.Stop();
     }
 
@@ -91,7 +121,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameClear = true;
-        Debug.Log("ゲームクリア！");
+        Pause.Instance.canvas[0].SetActive(false);
+        timelinecanvas.SetActive(true);
+        TL_GameClear.Play();
         SoundManager.Instance.BGMSource.Stop();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Pause : Singleton<Pause>
 {
     [Header("キャンバス")]
-    [SerializeField] GameObject[] canvas;
+    public GameObject[] canvas;
 
     [Header("ポーズメニューのカーソル初期位置")]
     [SerializeField] GameObject focusPauseMenu;
@@ -54,7 +54,7 @@ public class Pause : Singleton<Pause>
        canvas[1].SetActive(false);
     }
 
-    void CanvasInit()
+    public void CanvasInit()
     {
         for (int i = 0; i < canvas.Length; i++)
         {

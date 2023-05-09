@@ -55,6 +55,7 @@ public class PlayerControl : MonoBehaviour
         flameValue = 0;
         moveSpeSave = moveSpeed;
         jumpPowSave = JumpPower;
+        animator.SetTrigger("Up");
     }
 
     void Update()
@@ -73,6 +74,10 @@ public class PlayerControl : MonoBehaviour
         }
         cantmoveing();
         flameValue = Mathf.Clamp(flameValue, 0, 1);   //1Çí¥Ç¶Ç»Ç¢ÇÊÇ§Ç…ê›íË
+        if(characon.isGrounded && Jumpflg)
+        {
+            SoundManager.Instance.PlaySE_Game(2);
+        }
     }
 
     public void InputCheck()
