@@ -26,21 +26,28 @@ public class GameManager :Singleton <GameManager>
     public bool hpFull;  //HPÇ™ç≈ëÂÇ©ÇîªíËÇ∑ÇÈÉtÉâÉO
 
     GameObject HPGauge;
-
+    [Header("MainGameÇ≈égÇ§")]
+    [SerializeField] GameObject mainCamera;
+    
     private GameObject[] enemyobject;
 
     [SerializeField] GameObject axe; //TimelineíÜÇ…ïêäÌÇâBÇ∑ÇΩÇﬂ
 
     [Header("TimelineCanvas")]
-    [SerializeField] GameObject timelinecanvas;
+    [SerializeField] GameObject startCanvas;
+    [SerializeField] GameObject clearCanvas;
+    [SerializeField] GameObject overCanvas;
     [Header("TimelineDirecter")]
     [SerializeField] PlayableDirector TL_GameStart;
     [SerializeField] PlayableDirector TL_GameClear;
     [SerializeField] PlayableDirector TL_GameOver;
     void Start()
     {
+        mainCamera.SetActive(false);
         axe.SetActive(false);
-        timelinecanvas.SetActive(true);
+        startCanvas.SetActive(true);
+        clearCanvas.SetActive(false);
+        overCanvas.SetActive(false);
         Pause.Instance.CanvasInit();
         TL_GameStart.Play();
         HPCurrent = HPMax;
@@ -70,18 +77,20 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = true;
         Pause.Instance.canvas[0].SetActive(true);
-        timelinecanvas.SetActive(false);
+        startCanvas.SetActive(false);
         HPGauge = GameObject.FindWithTag("HPGauge");
         HPGauge.GetComponent<Image>().fillAmount = 1;
         axe.SetActive(true);
+        mainCamera.SetActive(true);
     }
     public void DemoSkip()
     {
         mainGame = true;
         TL_GameStart.Stop();
         Pause.Instance.canvas[0].SetActive(true);
-        timelinecanvas.SetActive(false);
+        startCanvas.SetActive(false);
         axe.SetActive(true);
+        mainCamera.SetActive(true);
     }
     public void Damage(float damage)
     {
@@ -111,8 +120,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameOver = true;
+        mainCamera.SetActive(false);
         Pause.Instance.canvas[0].SetActive(false);
-        timelinecanvas.SetActive(true);
+        overCanvas.SetActive(true);
         TL_GameOver.Play();
         SoundManager.Instance.BGMSource.Stop();
     }
@@ -121,8 +131,9 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameClear = true;
+        mainCamera.SetActive(false);
         Pause.Instance.canvas[0].SetActive(false);
-        timelinecanvas.SetActive(true);
+        clearCanvas.SetActive(true);
         TL_GameClear.Play();
         SoundManager.Instance.BGMSource.Stop();
     }
