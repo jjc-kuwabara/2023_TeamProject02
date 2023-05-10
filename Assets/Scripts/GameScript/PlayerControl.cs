@@ -75,6 +75,18 @@ public class PlayerControl : MonoBehaviour
             Attack();
             trun();
         }
+        if (GameManager.Instance.gameClear && !clearAni)
+        {
+            animator.SetTrigger("Win");
+            clearAni = true;
+            return;
+        }
+        if (GameManager.Instance.gameOver && !overAni)
+        {
+            animator.SetTrigger("Death");
+            overAni = true;
+            return;
+        }
         cantmoveing();
         flameValue = Mathf.Clamp(flameValue, 0, 1);   //1‚ð’´‚¦‚È‚¢‚æ‚¤‚ÉÝ’è
         stateOff = Mathf.Clamp(stateOff, 0, 1);
@@ -82,16 +94,19 @@ public class PlayerControl : MonoBehaviour
         {
             SoundManager.Instance.PlaySE_Game(2);
         }
-        if(GameManager.Instance.state_damage && knockBack && stateOff > 0)
+        if(knockBack && stateOff >= 0)
         {
             stateOff -= Time.deltaTime;
-            if(stateOff <= 0.1)
+            if(stateOff <= 0.3f)
             {
                 GameManager.Instance.state_damage = false;
+            }
+            if(stateOff <= 0f)
+            {
                 knockBack = false;
                 stateOff = 1f;
             }
-        }
+        } 
     }
 
     public void InputCheck()
@@ -132,18 +147,6 @@ public class PlayerControl : MonoBehaviour
         {
             knockBack = true;
             animator.SetTrigger("Damage");
-            return;
-        }
-        if(GameManager.Instance.gameClear && !clearAni)
-        {
-            animator.SetTrigger("Win");
-            clearAni = true;
-            return;
-        }
-       if(GameManager.Instance.gameOver && !overAni)
-        {
-            animator.SetTrigger("Death");
-            overAni = true;
             return;
         }
     }
@@ -304,7 +307,6 @@ public class PlayerControl : MonoBehaviour
                 Vector3 rote = myTransform.localEulerAngles;
                 rote.y = 90f;
                 myTransform.eulerAngles = rote;  //‰EŒü‚«
-                
                 return;
             }
         }

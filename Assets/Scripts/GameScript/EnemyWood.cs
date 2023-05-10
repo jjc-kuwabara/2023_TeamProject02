@@ -4,6 +4,7 @@ public class EnemyWood : MonoBehaviour
 {
 
     public int hitCount;   //木の体力
+    float knockPower = 100f;
 
     int range;    //生成する花粉をランダムにする
 
@@ -33,8 +34,6 @@ public class EnemyWood : MonoBehaviour
 
     void Update()
     {
-        if (!dead) { MoveAni(); }
-       
         if(attack)
         {
             attackReflesh -= Time.deltaTime;
@@ -46,12 +45,12 @@ public class EnemyWood : MonoBehaviour
         }
         if (hitCount <= 0 && !death)   //一度だけ処理する
         {
+            dead = true;
+            death = true;
             animator.SetTrigger("Die");
             EnemyMove move = gameObject.GetComponent<EnemyMove>();
             move.enabled = false;    //コンポーネントの非有効化
             coll.isTrigger = true;
-            dead = true;
-            death = true;
             Down();
             return;
         }
@@ -66,7 +65,7 @@ public class EnemyWood : MonoBehaviour
         {
             animator.SetBool("Move", true);
         }
-        if(attackArea.playerIn && !GameManager.Instance.state_damage && !attack && !control.attack)
+        if(attackArea.playerIn && !control.knockBack && !attack && !control.attack)
         {
             animator.SetTrigger("Attack");
             attack = true;
@@ -74,9 +73,19 @@ public class EnemyWood : MonoBehaviour
     }
     public void Hit()
     {
-        animator.SetTrigger("Damage");
+        if(!dead)
+        {
+            animator.SetTrigger("Damage");
+        }
         hitCount -= control.attackPower;
         hit = true;
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.8)
+        {
+            rigid.velocity = Vector3.zero;
+            Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
+            Vector3 distination = (transform.position - playerPos).normalized;
+            rigid.AddForce(distination * knockPower, ForceMode.VelocityChange);
+        }
     }
 
     public void Down()    //切り倒されたら消える
