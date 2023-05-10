@@ -15,7 +15,7 @@ public class WeaponAttack : MonoBehaviour
     void Update()
     {
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if(control.attack)
         {

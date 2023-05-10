@@ -4,7 +4,6 @@ public class EnemyWood : MonoBehaviour
 {
 
     public int hitCount;   //木の体力
-    public GameObject[] kafun;   //まき散らす花粉
 
     int range;    //生成する花粉をランダムにする
 
@@ -20,6 +19,7 @@ public class EnemyWood : MonoBehaviour
     Rigidbody rigid;
     EnemyAttackArea attackArea;
     PlayerControl control;
+    BoxCollider coll;
 
     void Start()
     {
@@ -27,6 +27,7 @@ public class EnemyWood : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         attackArea =  transform.Find("EnemyAttackArea").GetComponent<EnemyAttackArea>();
         control = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        coll = GetComponent<BoxCollider>();
         attackRefSave = attackReflesh;
     }
 
@@ -45,13 +46,15 @@ public class EnemyWood : MonoBehaviour
         }
         if (hitCount <= 0 && !death)   //一度だけ処理する
         {
+            animator.SetTrigger("Die");
             EnemyMove move = gameObject.GetComponent<EnemyMove>();
             move.enabled = false;    //コンポーネントの非有効化
+            coll.isTrigger = true;
             dead = true;
             death = true;
             Down();
+            return;
         }
-        //Sprinkle();
     }
     public void MoveAni()
     {
@@ -63,7 +66,7 @@ public class EnemyWood : MonoBehaviour
         {
             animator.SetBool("Move", true);
         }
-        if(attackArea.playerIn && !GameManager.Instance.state_damage && !attack)
+        if(attackArea.playerIn && !GameManager.Instance.state_damage && !attack && !control.attack)
         {
             animator.SetTrigger("Attack");
             attack = true;
@@ -80,23 +83,11 @@ public class EnemyWood : MonoBehaviour
     {
         if (dead)
         {
-            animator.SetTrigger("Die");
-            GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1], transform.position, Quaternion.identity);  //燃えるエフェクト
+            Vector3 thispos = this.transform.position;
+            GameObject deadEffect = Instantiate(EffectManager.Instance.StageFX[1], transform.position = new(thispos.x + 2 , thispos.y , thispos.z - 2), Quaternion.identity);  //燃えるエフェクト
             SoundManager.Instance.PlaySE_Game(5);
-            Destroy(deadEffect, 3);
-            Destroy(this.gameObject, 3);
-        }
-    }
-
-    public void Sprinkle()    //殴られたら花粉を撒く
-    {
-        if(hit)
-        {
-            range = Random.Range(0, 5);
-            Vector3 sprpos = this.transform.position;
-            float pos = Random.Range(-4, 5);
-            Instantiate(kafun[range], new Vector3(sprpos.x + pos, sprpos.y,sprpos.z),Quaternion.identity);
-            hit = false;
+            Destroy(deadEffect, 2f);
+            Destroy(this.gameObject, 2f);
         }
     }
     private void OnTriggerEnter(Collider other)

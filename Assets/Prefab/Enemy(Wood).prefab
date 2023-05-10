@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8936576904622941434
 Transform:
   m_ObjectHideFlags: 0
@@ -370,11 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCount: 2
-  kafun:
-  - {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
-  - {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
-  - {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
-  - {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
+  kafun: {fileID: 0}
   attack: 0
   hit: 0
   dead: 0
