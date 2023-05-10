@@ -99,7 +99,7 @@ public class SoundManager : Singleton<SoundManager>
     //SytemSEを外部から呼び出す時
     public void PlaySE_Sys(int i)
     {
-        SE_SysSource.clip = se_SysClip[i];
+        //SE_SysSource.clip = se_SysClip[i];
         SE_SysSource.Play();
     }
 

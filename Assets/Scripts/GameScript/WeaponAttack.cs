@@ -24,6 +24,7 @@ public class WeaponAttack : MonoBehaviour
                Debug.Log("çUåÇ");
                other.GetComponent<EnemyWood>().Hit();
                 control.FlameCharge();
+                SoundManager.Instance.PlaySE_Game(1);
             }
             if (other.tag == "PollenEnemy")
             {

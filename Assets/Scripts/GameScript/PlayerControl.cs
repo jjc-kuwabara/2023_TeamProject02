@@ -39,9 +39,11 @@ public class PlayerControl : MonoBehaviour
 
     public bool inputOK = false;  //入力可能
     public bool attack = false;  //攻撃可能
-    public bool cantmove = false; //動けないよ
+    public bool cantmove = false; //動けない
     public bool knockBack = false;  //ダメージモーション中
     public bool invicible = false;  //無敵
+    bool clearAni;
+    bool overAni;
 
     bool left;  //左向き
     bool right;  //右向き
@@ -82,7 +84,8 @@ public class PlayerControl : MonoBehaviour
 
     public void InputCheck()
     {
-        if (GameManager.Instance.mainGame && !GameManager.Instance.state_damage) { inputOK = true; }  //mainGame中なら操作可能
+        if (GameManager.Instance.mainGame && !GameManager.Instance.state_damage) 
+        { inputOK = true; }  //mainGame中なら操作可能
         else { inputOK = false; }
     }
     public void cantmoveing()
@@ -120,14 +123,16 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine("DamageOff");
             return;
         }
-        if(GameManager.Instance.gameClear)
+        if(GameManager.Instance.gameClear && !clearAni)
         {
             animator.SetTrigger("Win");
+            clearAni = true;
             return;
         }
-       if(GameManager.Instance.gameOver)
+       if(GameManager.Instance.gameOver && !overAni)
         {
             animator.SetTrigger("Death");
+            overAni = true;
             return;
         }
     }
@@ -245,6 +250,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!attack)
             {
+                SoundManager.Instance.PlaySE_Game(0);
                 attack = true;
                 cantmove = true;
                 animator.SetTrigger("Attack");//攻撃のアニメーション
