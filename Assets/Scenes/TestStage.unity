@@ -2002,6 +2002,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
     - target: {fileID: 6878722077454296545, guid: b430bb448fd0c714b80f09b4671dd943, type: 3}
+      propertyPath: hitCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878722077454296545, guid: b430bb448fd0c714b80f09b4671dd943, type: 3}
       propertyPath: kafun.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8837,6 +8841,10 @@ PrefabInstance:
       propertyPath: kafun
       value: 
       objectReference: {fileID: 5046934657391098050, guid: a27ddbc508c4b8f40b3fed61c0819ff6, type: 3}
+    - target: {fileID: 6878722077454296545, guid: b430bb448fd0c714b80f09b4671dd943, type: 3}
+      propertyPath: hitCount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6878722077454296545, guid: b430bb448fd0c714b80f09b4671dd943, type: 3}
       propertyPath: kafun.Array.size
       value: 1

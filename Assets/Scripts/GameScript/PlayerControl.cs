@@ -32,6 +32,7 @@ public class PlayerControl : MonoBehaviour
     Animator animator;
     bool Jumpflg;
     float riseTimeTemp;
+    float stateOff = 1f;
 
     //ˆÚ“®Œn‚Ì•Ï”
     Vector3 moveDirection;
@@ -74,12 +75,38 @@ public class PlayerControl : MonoBehaviour
             Attack();
             trun();
         }
+        if (GameManager.Instance.gameClear && !clearAni)
+        {
+            animator.SetTrigger("Win");
+            clearAni = true;
+            return;
+        }
+        if (GameManager.Instance.gameOver && !overAni)
+        {
+            animator.SetTrigger("Death");
+            overAni = true;
+            return;
+        }
         cantmoveing();
         flameValue = Mathf.Clamp(flameValue, 0, 1);   //1‚ð’´‚¦‚È‚¢‚æ‚¤‚ÉÝ’è
+        stateOff = Mathf.Clamp(stateOff, 0, 1);
         if(characon.isGrounded && Jumpflg)
         {
             SoundManager.Instance.PlaySE_Game(2);
         }
+        if(knockBack && stateOff >= 0)
+        {
+            stateOff -= Time.deltaTime;
+            if(stateOff <= 0.3f)
+            {
+                GameManager.Instance.state_damage = false;
+            }
+            if(stateOff <= 0f)
+            {
+                knockBack = false;
+                stateOff = 1f;
+            }
+        } 
     }
 
     public void InputCheck()
@@ -120,19 +147,6 @@ public class PlayerControl : MonoBehaviour
         {
             knockBack = true;
             animator.SetTrigger("Damage");
-            StartCoroutine("DamageOff");
-            return;
-        }
-        if(GameManager.Instance.gameClear && !clearAni)
-        {
-            animator.SetTrigger("Win");
-            clearAni = true;
-            return;
-        }
-       if(GameManager.Instance.gameOver && !overAni)
-        {
-            animator.SetTrigger("Death");
-            overAni = true;
             return;
         }
     }
@@ -266,12 +280,6 @@ public class PlayerControl : MonoBehaviour
         attack = false;
         cantmove = false;
     }
-    IEnumerator DamageOff()
-    {
-        yield return new WaitForSeconds(3.5f);
-        GameManager.Instance.state_damage = false;
-        knockBack = false;
-    }
     IEnumerator InvicibleOff()
     {
         while (invicibleCurrentTimer > 0)
@@ -299,7 +307,6 @@ public class PlayerControl : MonoBehaviour
                 Vector3 rote = myTransform.localEulerAngles;
                 rote.y = 90f;
                 myTransform.eulerAngles = rote;  //‰EŒü‚«
-                
                 return;
             }
         }
@@ -322,6 +329,7 @@ public class PlayerControl : MonoBehaviour
         if (FlameGauge.GetComponent<Image>().fillAmount == 1 && !invicible)
         {
             invicible = true;
+            SoundManager.Instance.PlaySE_Game(3);
             attackPower = 3;
             invicibleCurrentTimer = invicibleSec;
             StartCoroutine("InvicibleOff");
