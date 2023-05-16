@@ -25,7 +25,7 @@ public class DeadAreaScript : MonoBehaviour
             
             Debug.Log("Playerでした");
             controll.Dead(false);//Deadでキャラコンをオフにする
-            other.transform.position = new Vector3(0, 2, 0); //リスの高さ
+            other.transform.position = new Vector3(-82, 2, 0); //リスの高さ
             Transform myTransform = other.transform;
             Vector3 rote = myTransform.localEulerAngles;
             rote.y = 90f;

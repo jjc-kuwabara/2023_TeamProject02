@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.EventSystems;
 
 public class GameManager :Singleton <GameManager>
 {
+    //ゲームのフォーカスするときのオブジェクト
+    [Header("各メニューの初期カーソル位置")]
+    [SerializeField] GameObject[] FocusObject;
+
     //プレイヤーの変数（体力など
     [Header("PlayerのHP")]
     public float HPCurrent = 10;
@@ -133,6 +138,7 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameOver = true;
+        EventSystem.current.SetSelectedGameObject(FocusObject[0]);
         axe.SetActive(false);
         mainCamera.SetActive(false);
         overCamera.SetActive(true);
@@ -146,6 +152,7 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = false;
         gameClear = true;
+        EventSystem.current.SetSelectedGameObject(FocusObject[1]);
         axe.SetActive(false);
         mainCamera.SetActive(false);
         clearCamera.SetActive(true);
