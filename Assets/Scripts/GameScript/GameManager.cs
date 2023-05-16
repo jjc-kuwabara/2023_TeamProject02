@@ -34,7 +34,7 @@ public class GameManager :Singleton <GameManager>
     [Header("MainGameÇ≈égÇ§")]
     [SerializeField] GameObject mainCamera;
     
-    private GameObject[] enemyObject;
+    private GameObject[] enemyobject;
 
     [SerializeField] GameObject axe; //TimelineíÜÇ…ïêäÌÇâBÇ∑ÇΩÇﬂ
 
@@ -57,9 +57,6 @@ public class GameManager :Singleton <GameManager>
         startCanvas.SetActive(true);
         clearCanvas.SetActive(false);
         overCanvas.SetActive(false);
-        startCamera.SetActive(true);
-        clearCamera.SetActive(false);
-        overCamera.SetActive(false);
         Pause.Instance.CanvasInit();
         TL_GameStart.Play();
         HPCurrent = HPMax;
@@ -80,7 +77,7 @@ public class GameManager :Singleton <GameManager>
         }
         if(TL_GameStart.state == PlayState.Playing && Input.GetKeyDown(KeyCode.T))
         {
-            DemoSkip();
+            DemoSkip(); 
         }
         HPCheck();
         HPCurrent = Mathf.Clamp(HPCurrent, HPMin, HPMax);
@@ -94,7 +91,6 @@ public class GameManager :Singleton <GameManager>
         HPGauge = GameObject.FindWithTag("HPGauge");
         HPGauge.GetComponent<Image>().fillAmount = 1;
         axe.SetActive(true);
-        startCamera.SetActive(false);
         mainCamera.SetActive(true);
     }
     public void DemoSkip()

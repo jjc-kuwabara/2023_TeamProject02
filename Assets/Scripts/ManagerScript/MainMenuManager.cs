@@ -64,7 +64,7 @@ public class MainMenuManager : MonoBehaviour
         if (currentFocus != previousFocus)
         {
             SoundManager.Instance.PlaySE_Sys(0);
-            return;
+            
         }
         if(currentFocus == null)//フォーカス対象がなかった場合、前フレームまで選択していた項目を選択状態に
         {
