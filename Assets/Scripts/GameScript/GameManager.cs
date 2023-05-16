@@ -70,8 +70,8 @@ public class GameManager :Singleton <GameManager>
             GameOver();
         }
 
-        enemyObject = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemyObject.Length <= 0 && !gameClear)
+        enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemyobject.Length <= 0 && !gameClear)
         {
             GameClear();
         }
