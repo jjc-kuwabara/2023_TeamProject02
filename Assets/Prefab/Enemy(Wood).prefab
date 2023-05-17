@@ -295,7 +295,7 @@ Animator:
   m_GameObject: {fileID: 8936576904623110362}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3426e6e4e6c49c24ebf093a97ccab00c, type: 3}
-  m_Controller: {fileID: 9100000, guid: c71ab0ac4111d954a8a5d62804b8b649, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80775c9c9801693438db8ce395e76770, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCount: 2
-  kafun: {fileID: 0}
   attack: 0
   hit: 0
   dead: 0
