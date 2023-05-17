@@ -34,6 +34,10 @@ public class EnemyWood : MonoBehaviour
 
     void Update()
     {
+        if(!dead)
+        {
+            MoveAni();
+        }
         if(attack)
         {
             attackReflesh -= Time.deltaTime;
@@ -65,7 +69,7 @@ public class EnemyWood : MonoBehaviour
         {
             animator.SetBool("Move", true);
         }
-        if(attackArea.playerIn && !control.knockBack && !attack && !control.attack)
+        if(attackArea.playerIn && !control.knockBack && !attack && !control.attack && !GameManager.Instance.state_damage)
         {
             animator.SetTrigger("Attack");
             attack = true;

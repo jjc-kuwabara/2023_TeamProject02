@@ -263,11 +263,13 @@ public class PlayerControl : MonoBehaviour
             if (!attack)
             {
                 SoundManager.Instance.PlaySE_Game(0);
-                attack = true;
                 cantmove = true;
                 animator.SetTrigger("Attack");//攻撃のアニメーション
                 StartCoroutine("AttackOff");
-               
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5)
+                { 
+                    attack = true;
+                }
             }
             else { return; }
         }
