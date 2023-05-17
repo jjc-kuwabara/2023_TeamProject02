@@ -5,9 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Pause : Singleton<Pause>
 {
-    [Header("キャンバス")]
-    public GameObject[] canvas;
-
     [Header("ポーズメニューのカーソル初期位置")]
     [SerializeField] GameObject focusPauseMenu;
 
@@ -19,7 +16,6 @@ public class Pause : Singleton<Pause>
     void Start()
     {
         CanvasInit();
-        canvas[0].SetActive(true);
     }
 
     void Update()
@@ -39,8 +35,8 @@ public class Pause : Singleton<Pause>
             Time.timeScale = 0;
             pause = true;
             Debug.Log("一時停止");
-            canvas[1].SetActive(true);
-            canvas[0].SetActive(false);
+            GameManager.Instance.mainCanvas[1].SetActive(true);
+            GameManager.Instance.mainCanvas[0].SetActive(false);
             EventSystem.current.SetSelectedGameObject(focusPauseMenu);
         }
     }
@@ -50,15 +46,15 @@ public class Pause : Singleton<Pause>
        Time.timeScale = 1;
        pause = false;
        Debug.Log("再開");
-       canvas[0].SetActive(true);
-       canvas[1].SetActive(false);
+       GameManager.Instance.mainCanvas[0].SetActive(true);
+       GameManager.Instance.mainCanvas[1].SetActive(false);
     }
 
     public void CanvasInit()
     {
-        for (int i = 0; i < canvas.Length; i++)
+        for (int i = 0; i < GameManager.Instance.mainCanvas.Length; i++)
         {
-            canvas[i].SetActive(false);
+            GameManager.Instance.mainCanvas[i].SetActive(false);
         }
     }
 

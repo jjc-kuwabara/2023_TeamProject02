@@ -30,12 +30,14 @@ public class GameManager :Singleton <GameManager>
     public bool state_damage = false;
     public bool hpFull;  //HPÇ™ç≈ëÂÇ©ÇîªíËÇ∑ÇÈÉtÉâÉO
 
+    [Header("MainGameíÜÇÃUI")]
+    public GameObject[] mainCanvas;
     GameObject HPGauge;
     [Header("MainGameÇ≈égÇ§")]
     [SerializeField] GameObject mainCamera;
     
     private GameObject[] enemyobject;
-
+    PlayerControl control;
     [SerializeField] GameObject axe; //TimelineíÜÇ…ïêäÌÇâBÇ∑ÇΩÇﬂ
 
     [Header("TimelineCanvas")]
@@ -52,6 +54,8 @@ public class GameManager :Singleton <GameManager>
     [SerializeField] GameObject overCamera;
     void Start()
     {
+        control = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        control.FlameGauge.GetComponent<Image>().fillAmount = 0;
         mainCamera.SetActive(false);
         axe.SetActive(false);
         startCanvas.SetActive(true);
@@ -61,7 +65,6 @@ public class GameManager :Singleton <GameManager>
         TL_GameStart.Play();
         HPCurrent = HPMax;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -86,25 +89,28 @@ public class GameManager :Singleton <GameManager>
     {
         mainGame = true;
         SoundManager.Instance.PlayBGM(0);
-        Pause.Instance.canvas[0].SetActive(true);
-        startCanvas.SetActive(false);
-        HPGauge = GameObject.FindWithTag("HPGauge");
-        HPGauge.GetComponent<Image>().fillAmount = 1;
-        axe.SetActive(true);
-        mainCamera.SetActive(true);
-    }
-    public void DemoSkip()
-    {
-        mainGame = true;
-        SoundManager.Instance.PlayBGM(0);
-        TL_GameStart.Stop();
-        Pause.Instance.canvas[0].SetActive(true);
+        mainCanvas[0].SetActive(true);
         startCanvas.SetActive(false);
         HPGauge = GameObject.FindWithTag("HPGauge");
         HPGauge.GetComponent<Image>().fillAmount = 1;
         axe.SetActive(true);
         startCamera.SetActive(false);
         mainCamera.SetActive(true);
+        control.FlameGauge.GetComponent<Image>().fillAmount = 0;
+    }
+    public void DemoSkip()
+    {
+        mainGame = true;
+        SoundManager.Instance.PlayBGM(0);
+        TL_GameStart.Stop();
+        mainCanvas[0].SetActive(true);
+        startCanvas.SetActive(false);
+        HPGauge = GameObject.FindWithTag("HPGauge");
+        HPGauge.GetComponent<Image>().fillAmount = 1;
+        axe.SetActive(true);
+        startCamera.SetActive(false);
+        mainCamera.SetActive(true);
+        control.FlameGauge.GetComponent<Image>().fillAmount = 0;
     }
     public void Damage(float damage)
     {
@@ -138,7 +144,7 @@ public class GameManager :Singleton <GameManager>
         axe.SetActive(false);
         mainCamera.SetActive(false);
         overCamera.SetActive(true);
-        Pause.Instance.canvas[0].SetActive(false);
+        mainCanvas[0].SetActive(false);
         overCanvas.SetActive(true);
         TL_GameOver.Play();
         SoundManager.Instance.BGMSource.Stop();
@@ -152,7 +158,7 @@ public class GameManager :Singleton <GameManager>
         axe.SetActive(false);
         mainCamera.SetActive(false);
         clearCamera.SetActive(true);
-        Pause.Instance.canvas[0].SetActive(false);
+        mainCanvas[0].SetActive(false);
         clearCanvas.SetActive(true);
         TL_GameClear.Play();
         SoundManager.Instance.BGMSource.Stop();

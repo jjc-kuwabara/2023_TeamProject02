@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("必殺技ゲージ")]
     public float flameCharge;   //ゲージの増加量
-    GameObject FlameGauge; //ゲージ
+    public GameObject FlameGauge; //ゲージ
     public float flameValue;   //ゲージへの代入用
 
     //操作に必要
@@ -53,8 +53,6 @@ public class PlayerControl : MonoBehaviour
     {
         characon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        FlameGauge = GameObject.FindWithTag("FlameGauge");
-        FlameGauge.GetComponent<Image>().fillAmount = 0;
         flameValue = 0;
         moveSpeSave = moveSpeed;
         jumpPowSave = JumpPower;
