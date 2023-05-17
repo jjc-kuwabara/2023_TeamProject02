@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         CanvasInIt();
-
+        SoundManager.Instance.PlayBGM(2);
         canvas[0].SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(focusobject[0]);
