@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
         {
             SoundManager.Instance.PlaySE_Game(2);
         }
-        if(knockBack && stateOff >= 0)
+        if(GameManager.Instance.hpCheck && stateOff >= 0f)
         {
             stateOff -= Time.deltaTime;
             if(stateOff <= 0.3f)
@@ -101,6 +101,7 @@ public class PlayerControl : MonoBehaviour
             }
             if(stateOff <= 0f)
             {
+                GameManager.Instance.hpCheck = false;
                 knockBack = false;
                 stateOff = 1f;
             }
