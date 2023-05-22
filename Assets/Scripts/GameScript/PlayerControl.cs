@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
     public float healing = 1;  //回復量
+    public GameObject itemtext;
 
     [Header("必殺技ゲージ")]
     public float flameCharge;   //ゲージの増加量
