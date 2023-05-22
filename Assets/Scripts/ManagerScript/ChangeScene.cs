@@ -40,4 +40,9 @@ public class ChangeScene : MonoBehaviour
         FadeManager.Instance.LoadSceneIndex(5, 1);
     }
 
+    public void EndGame()
+    {
+        Application.Quit();//ƒQ[ƒ€I—¹
+    }
+
 }
