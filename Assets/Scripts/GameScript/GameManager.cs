@@ -173,7 +173,7 @@ public class GameManager :Singleton <GameManager>
                 int vo = Random.Range(20, 22);
                 SoundManager.Instance.PlaySE_Game(vo);
             }
-            if (HPCurrent <= HPMax && HPCurrent >= 7)
+            if (HPCurrent < HPMax && HPCurrent >= 7)
             {
                 int vo = Random.Range(17, 20);
                 SoundManager.Instance.PlaySE_Game(vo);
