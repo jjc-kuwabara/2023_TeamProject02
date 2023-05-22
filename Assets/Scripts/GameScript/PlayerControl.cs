@@ -335,6 +335,8 @@ public class PlayerControl : MonoBehaviour
         {
             invicible = true;
             SoundManager.Instance.PlaySE_Game(3);
+            int vo = Random.Range(27, 31);
+            SoundManager.Instance.PlaySE_Game(vo);
             attackPower = 3;
             invicibleCurrentTimer = invicibleSec;
             StartCoroutine("InvicibleOff");

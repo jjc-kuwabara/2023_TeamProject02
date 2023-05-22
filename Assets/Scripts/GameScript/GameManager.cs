@@ -64,6 +64,8 @@ public class GameManager :Singleton <GameManager>
         overCanvas.SetActive(false);
         Pause.Instance.CanvasInit();
         TL_GameStart.Play();
+        int vo = Random.Range(8, 11);
+        SoundManager.Instance.PlaySE_Game(vo);
         HPCurrent = HPMax;
     }
     // Update is called once per frame
@@ -72,6 +74,29 @@ public class GameManager :Singleton <GameManager>
         if (HPCurrent <= 0 && !gameOver)
         {
             GameOver();
+        }
+        if(gameClear)
+        {
+            if (HPCurrent == HPMax)
+            {
+                 int vo =Random.Range(20, 22);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= HPMax && HPCurrent >= 7)
+            {
+                 int vo =Random.Range(17,20);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= 6 && HPCurrent >= 4)
+            {
+                int vo = Random.Range(14,17);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= 3 && HPCurrent >= 1)
+            {
+                int vo = Random.Range(11,14);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
         }
 
         enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
@@ -149,6 +174,8 @@ public class GameManager :Singleton <GameManager>
         overCanvas.SetActive(true);
         TL_GameOver.Play();
         SoundManager.Instance.BGMSource.Stop();
+        int vo = Random.Range(22, 27);
+        SoundManager.Instance.PlaySE_Game(vo);
     }
 
     public void GameClear()//ゲームクリアのタイムラインを有効
