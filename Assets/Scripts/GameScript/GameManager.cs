@@ -75,29 +75,7 @@ public class GameManager :Singleton <GameManager>
         {
             GameOver();
         }
-        if(gameClear)
-        {
-            if (HPCurrent == HPMax)
-            {
-                 int vo =Random.Range(20, 22);
-                SoundManager.Instance.PlaySE_Game(vo);
-            }
-            if (HPCurrent <= HPMax && HPCurrent >= 7)
-            {
-                 int vo =Random.Range(17,20);
-                SoundManager.Instance.PlaySE_Game(vo);
-            }
-            if (HPCurrent <= 6 && HPCurrent >= 4)
-            {
-                int vo = Random.Range(14,17);
-                SoundManager.Instance.PlaySE_Game(vo);
-            }
-            if (HPCurrent <= 3 && HPCurrent >= 1)
-            {
-                int vo = Random.Range(11,14);
-                SoundManager.Instance.PlaySE_Game(vo);
-            }
-        }
+       
 
         enemyobject = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyobject.Length <= 0 && !gameClear)
@@ -190,5 +168,25 @@ public class GameManager :Singleton <GameManager>
         clearCanvas.SetActive(true);
         TL_GameClear.Play();
         SoundManager.Instance.BGMSource.Stop();
+            if (HPCurrent == HPMax)
+            {
+                int vo = Random.Range(20, 22);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= HPMax && HPCurrent >= 7)
+            {
+                int vo = Random.Range(17, 20);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= 6 && HPCurrent >= 4)
+            {
+                int vo = Random.Range(14, 17);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
+            if (HPCurrent <= 3 && HPCurrent >= 1)
+            {
+                int vo = Random.Range(11, 14);
+                SoundManager.Instance.PlaySE_Game(vo);
+            }
     }
 }
