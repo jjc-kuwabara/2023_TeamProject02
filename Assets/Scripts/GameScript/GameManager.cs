@@ -116,11 +116,10 @@ public class GameManager :Singleton <GameManager>
     public void Damage(float damage)
     {
         HPCurrent -= damage;
-
+        state_damage = true;//連続でダメージが受けないように
         float HPvalue = HPCurrent / HPMax;
         HPGauge.GetComponent<Image>().fillAmount = HPvalue;
         SoundManager.Instance.PlaySE_Sys(7);
-        state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
         hpCheck = true;
     }
     public void Heal(float heal)

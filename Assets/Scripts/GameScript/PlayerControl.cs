@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class PlayerControl : MonoBehaviour
     [Header("回復アイテム")]
     public float itemcount;      //回復アイテムの個数
     public float healing = 1;  //回復量
-    public GameObject itemtext;
+    [SerializeField] TextMeshProUGUI itemtext;
 
     [Header("必殺技ゲージ")]
     public float flameCharge;   //ゲージの増加量
@@ -131,6 +132,12 @@ public class PlayerControl : MonoBehaviour
     }
     public void Animation()
     {
+        if(GameManager.Instance.state_damage && !knockBack)
+        {
+            knockBack = true;
+            animator.SetTrigger("Damage");
+            return;
+        }
         if(Jumpflg)
         {
             animator.SetBool("Jump", true);
@@ -143,12 +150,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         animator.SetBool("Run", false);
-        if(GameManager.Instance.state_damage && !knockBack)
-        {
-            knockBack = true;
-            animator.SetTrigger("Damage");
-            return;
-        }
+        
     }
 
     void Movement()
@@ -253,6 +255,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     GameManager.Instance.Heal(healing);
                     itemcount--;
+                    itemtext.text = itemcount + "/3";
                 }
             }
     }
