@@ -152,7 +152,7 @@ public class GameManager :Singleton <GameManager>
         overCanvas.SetActive(true);
         TL_GameOver.Play();
         SoundManager.Instance.BGMSource.Stop();
-        int vo = Random.Range(22, 27);
+        int vo = Random.Range(23, 28);
         SoundManager.Instance.PlaySE_Game(vo);
     }
 
@@ -170,7 +170,7 @@ public class GameManager :Singleton <GameManager>
         SoundManager.Instance.BGMSource.Stop();
             if (HPCurrent == HPMax)
             {
-                int vo = Random.Range(20, 22);
+                int vo = Random.Range(20, 23);
                 SoundManager.Instance.PlaySE_Game(vo);
             }
             if (HPCurrent < HPMax && HPCurrent >= 7)
