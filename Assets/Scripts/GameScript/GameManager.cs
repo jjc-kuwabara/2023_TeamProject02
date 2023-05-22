@@ -29,6 +29,7 @@ public class GameManager :Singleton <GameManager>
     [Header("ゲーム内のフラグ")]
     public bool state_damage = false;
     public bool hpFull;  //HPが最大かを判定するフラグ
+    public bool hpCheck;  //HPが減った時用
 
     [Header("MainGame中のUI")]
     public GameObject[] mainCanvas;
@@ -120,6 +121,7 @@ public class GameManager :Singleton <GameManager>
         HPGauge.GetComponent<Image>().fillAmount = HPvalue;
         SoundManager.Instance.PlaySE_Sys(7);
         state_damage = true;//こいつはplayercontrollerにあって連続でダメージが受けないように、必要
+        hpCheck = true;
     }
     public void Heal(float heal)
     {
